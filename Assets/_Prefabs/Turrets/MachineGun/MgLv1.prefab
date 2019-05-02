@@ -132,9 +132,11 @@ GameObject:
   - component: {fileID: 95923370989534898}
   - component: {fileID: 65726091259095192}
   - component: {fileID: 114126889211382498}
+  - component: {fileID: 114759083986912748}
+  - component: {fileID: 114966915129894944}
   m_Layer: 0
   m_Name: MgLv1
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -723,6 +725,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turretTarget: {fileID: 114126889211382498}
+--- !u!114 &114759083986912748
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1550411524398680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bac4baea61757d946b761d95dc17e4c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turretName: Machine Gun Turret
+  fireRate: 25
+  damage: 16
+  level: 1
+  upgradeCost: 300
+  sellCost: 100
 --- !u!114 &114831654490053254
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -736,6 +755,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turretTarget: {fileID: 0}
   speed: 0
+--- !u!114 &114966915129894944
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1550411524398680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd00822aaf1f0d5449eb06ce4eec2de3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turretInfo: {fileID: 0}
 --- !u!135 &135534592025692300
 SphereCollider:
   m_ObjectHideFlags: 1

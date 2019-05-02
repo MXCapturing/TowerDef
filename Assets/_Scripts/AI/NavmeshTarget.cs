@@ -5,14 +5,12 @@ using UnityEngine.AI;
 
 public class NavmeshTarget : MonoBehaviour {
 
-    public Transform target;
-    private NavMeshAgent agent;
+    public NavMeshAgent agent;
     private GamePhases phases;
 
 	// Use this for initialization
 	void Start () {
         agent = GetComponent<NavMeshAgent>();
-        agent.SetDestination(target.position);
         phases = GameObject.Find("GameManager").GetComponent<GamePhases>();
 	}
 	
