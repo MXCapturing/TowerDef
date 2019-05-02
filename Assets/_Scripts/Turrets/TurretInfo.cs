@@ -12,6 +12,8 @@ public class TurretInfo : MonoBehaviour {
     public int upgradeCost;
     public int sellCost;
 
+    public int upgradeNumber;
+
     private Text nameText;
     private Text fireText;
     private Text damageText;
@@ -37,7 +39,7 @@ public class TurretInfo : MonoBehaviour {
         nameText.text = turretName;
         fireText.text = "" + fireRate;
         damageText.text = "" + damage;
-        levelText.text = "Lvl:" + level;
+        levelText.text = "Lvl: " + level;
         upgradeText.text = "$" + upgradeCost;
         sellText.text = "$" + sellCost;
     }

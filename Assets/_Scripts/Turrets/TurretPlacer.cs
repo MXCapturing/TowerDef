@@ -30,6 +30,11 @@ public class TurretPlacer : MonoBehaviour {
                 PlaceCubeNear(hitInfo.point);
             }
         }
+        if (Input.GetMouseButtonDown(1))
+        {
+            shopMenu.SetActive(true);
+            Destroy(this.gameObject);
+        }
 
         transform.localScale = new Vector3(xSize * grid.size, 50 * grid.size, zSize* grid.size);
         var hitCollidersColour = Physics.OverlapBox(gameObject.transform.position, new Vector3((xSize * grid.size)/20, grid.size * 100000, (zSize * grid.size)/20), Quaternion.identity, hitlayers);
