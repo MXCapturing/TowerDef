@@ -5467,12 +5467,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turretInfo: {fileID: 188273310}
   upgrade: {fileID: 594462658}
+  upgradeButton: {fileID: 594462656}
   turretNumber:
   - {fileID: 1550411524398680, guid: 71b1efd6e77b4ad44b16b5e92ab48463, type: 2}
   - {fileID: 1453395417276116, guid: a10f3db47b819594fb2444af9a9c39af, type: 2}
   - {fileID: 1735303111823736, guid: 06f7f97a6db02554fae2df2023aa8542, type: 2}
   - {fileID: 1951828900947116, guid: 9da69a1915114374b96dfed140f50108, type: 2}
   - {fileID: 1342393720437762, guid: 35e382479fd51cb4d9bde37267b9ce0e, type: 2}
+  - {fileID: 1818107557255714, guid: 6f003c92098e06140b9406684a6c15f3, type: 2}
 --- !u!114 &1859504499
 MonoBehaviour:
   m_ObjectHideFlags: 0

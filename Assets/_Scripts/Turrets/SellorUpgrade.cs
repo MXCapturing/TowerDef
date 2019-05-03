@@ -7,6 +7,7 @@ public class SellorUpgrade : MonoBehaviour {
 
     public GameObject turretInfo;
     public Button upgrade;
+    public GameObject upgradeButton;
 
     private int upgradeTo;
     public GameObject[] turretNumber;
@@ -37,6 +38,15 @@ public class SellorUpgrade : MonoBehaviour {
             else
             {
                 upgrade.interactable = false;
+            }
+
+            if(References.instance.turretChosen.GetComponent<TurretInfo>().upgradeCost == 0)
+            {
+                upgradeButton.SetActive(false);
+            }
+            else
+            {
+                upgradeButton.SetActive(true);
             }
         }
     }
