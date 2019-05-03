@@ -5060,8 +5060,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: 
+      - m_Target: {fileID: 1859504495}
+        m_MethodName: SpawnRocketLauncher
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5429,6 +5429,8 @@ MonoBehaviour:
   machineGun: {fileID: 1530452297996902, guid: 42be59ea74de1e349817914d610fa0b0, type: 2}
   flamethrower: {fileID: 1185630694576140, guid: ea993e260c91b8e4f870afbfca6e7b76,
     type: 2}
+  rocketlauncher: {fileID: 1707434641066892, guid: db175c02e4beed74195e9d770fe3676c,
+    type: 2}
 --- !u!4 &1859504496
 Transform:
   m_ObjectHideFlags: 0
@@ -5475,6 +5477,7 @@ MonoBehaviour:
   - {fileID: 1951828900947116, guid: 9da69a1915114374b96dfed140f50108, type: 2}
   - {fileID: 1342393720437762, guid: 35e382479fd51cb4d9bde37267b9ce0e, type: 2}
   - {fileID: 1818107557255714, guid: 6f003c92098e06140b9406684a6c15f3, type: 2}
+  - {fileID: 1026778466762290, guid: 09ed247fc2dba0048bec1cd950500826, type: 2}
 --- !u!114 &1859504499
 MonoBehaviour:
   m_ObjectHideFlags: 0
