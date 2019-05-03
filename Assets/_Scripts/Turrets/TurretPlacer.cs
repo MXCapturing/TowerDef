@@ -8,14 +8,11 @@ public class TurretPlacer : MonoBehaviour {
     public GameObject turret;
     public int xSize;
     public int zSize;
-    public GameObject shopMenu;
     public LayerMask hitlayers;
 
 	// Use this for initialization
 	void Start () {
         grid = FindObjectOfType<GridTD>();
-        shopMenu = GameObject.Find("ShopMenu");
-        shopMenu.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -32,7 +29,7 @@ public class TurretPlacer : MonoBehaviour {
         }
         if (Input.GetMouseButtonDown(1))
         {
-            shopMenu.SetActive(true);
+            ShopMenu.instance.shopMenu.SetActive(true);
             Destroy(this.gameObject);
         }
 
@@ -59,7 +56,7 @@ public class TurretPlacer : MonoBehaviour {
         {
             GameObject newObject = Instantiate(turret, finalPosition, Quaternion.identity) as GameObject;
             newObject.transform.localScale = new Vector3(xSize * grid.size, 50 * grid.size, zSize * grid.size);
-            shopMenu.SetActive(true);
+            ShopMenu.instance.shopMenu.SetActive(true);
             Destroy(this.gameObject);
         }
     }

@@ -5,15 +5,17 @@ using UnityEngine;
 public class SpawnPlacer : MonoBehaviour {
 
     public GameObject machineGun;
-    public GameObject cube;
+    public GameObject flamethrower;
 
     public void SpawnMachineGun()
     {
+        ShopMenu.instance.shopMenu.SetActive(false);
         Instantiate(machineGun, Vector3.zero, Quaternion.identity);
     }
 
-    public void SpawnPlaceholderGun()
+    public void SpawnFlamethrower()
     {
-        Instantiate(cube, Vector3.zero, Quaternion.identity);
+        ShopMenu.instance.shopMenu.SetActive(false);
+        Instantiate(flamethrower, Vector3.zero, Quaternion.identity);
     }
 }
