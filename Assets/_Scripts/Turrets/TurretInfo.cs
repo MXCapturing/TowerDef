@@ -7,7 +7,7 @@ public class TurretInfo : MonoBehaviour {
 
     public string turretName;
     public float fireRate;
-    public float damage;
+    public int damage;
     public int level;
     public int upgradeCost;
     public int sellCost;
