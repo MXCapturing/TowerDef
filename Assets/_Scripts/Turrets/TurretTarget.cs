@@ -2,10 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum TurretType
+{
+    MachineGun,
+    FlameThrower,
+    RocketLauncher
+}
+
 public class TurretTarget : MonoBehaviour {
 
     public GameObject target = null;
     public List<GameObject> targets = new List<GameObject>();
+    public TurretType turretType;
 
     // Use this for initialization
 
@@ -37,8 +45,24 @@ public class TurretTarget : MonoBehaviour {
     {
         if (target != null && GamePhases.instance.gamePhases == Phases.FPS)
         {
-            Debug.Log("Fire");
-            target.gameObject.GetComponent<EnemyHP>().Damage(this.gameObject.GetComponent<TurretInfo>().damage);
+            switch (turretType)
+            {
+                case TurretType.MachineGun:
+                    Debug.Log("MachineHit");
+                    target.gameObject.GetComponent<EnemyHP>().Damage(this.gameObject.GetComponent<TurretInfo>().damage);
+                    break;
+
+                case TurretType.FlameThrower:
+                    Debug.Log("FlameHit");
+                    //activate code on AOE Cone
+                    //activate Particle Effects
+                    break;
+
+                case TurretType.RocketLauncher:
+                    Debug.Log("RocketHit");
+                    //activate Rocket AOE Circle
+                    break;
+            }
         }
     }
 }

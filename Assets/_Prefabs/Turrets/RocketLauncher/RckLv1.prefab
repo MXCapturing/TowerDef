@@ -918,6 +918,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   targets: []
+  turretType: 2
 --- !u!114 &114752819534641744
 MonoBehaviour:
   m_ObjectHideFlags: 1
