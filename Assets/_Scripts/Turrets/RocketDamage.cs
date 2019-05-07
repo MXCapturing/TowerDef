@@ -10,15 +10,19 @@ public class RocketDamage : MonoBehaviour {
     public float radius;
     public int damage;
 
-    private void Update()
+    private void Start()
     {
-        float step = speed * Time.deltaTime;
-        transform.position += Vector3.MoveTowards(transform.position, target, step);
+        transform.LookAt(target);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void Update()
     {
-        if(collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Map")
+        transform.position += transform.forward * speed;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Enemy" || other.tag == "Map")
         {
             DoDamage();
             this.GetComponent<Renderer>().enabled = false;
@@ -40,6 +44,11 @@ public class RocketDamage : MonoBehaviour {
                 float effect = 1 - (proximity / radius);
 
                 damage = Mathf.RoundToInt(damage * effect);
+
+                if(damage < 0)
+                {
+                    damage = 0;
+                }
 
                 enemy.Damage(damage);
             }
