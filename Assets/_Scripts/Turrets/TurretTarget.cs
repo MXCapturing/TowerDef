@@ -15,6 +15,10 @@ public class TurretTarget : MonoBehaviour {
     public List<GameObject> targets = new List<GameObject>();
     public TurretType turretType;
 
+    public FlameCone flameCone;
+    public GameObject rocket;
+    public GameObject rocketSpawn;
+
     // Use this for initialization
 
     private void Start()
@@ -54,12 +58,16 @@ public class TurretTarget : MonoBehaviour {
 
                 case TurretType.FlameThrower:
                     Debug.Log("FlameHit");
-                    //activate code on AOE Cone
+                    flameCone.DamageOn();
                     //activate Particle Effects
                     break;
 
                 case TurretType.RocketLauncher:
                     Debug.Log("RocketHit");
+                    GameObject newRocket = Instantiate(rocket, rocketSpawn.transform.position, transform.localRotation);
+                    newRocket.transform.Rotate(90, 0, 0);
+                    newRocket.GetComponent<RocketDamage>().target = target.transform.position;
+                    newRocket.GetComponent<RocketDamage>().damage = this.GetComponent<TurretInfo>().damage;
                     //activate Rocket AOE Circle
                     break;
             }
