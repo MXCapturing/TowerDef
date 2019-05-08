@@ -11,6 +11,8 @@ TagManager:
   - Dummie
   - Turret
   - Map
+  - Weapon
+  - Trap
   layers:
   - Default
   - TransparentFX

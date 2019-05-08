@@ -32,7 +32,16 @@ public class TurretInfo : MonoBehaviour {
         nameText = GameObject.Find("Turret Type").GetComponent<Text>();
         fireText = GameObject.Find("Fire Rate Number").GetComponent<Text>();
         damageText = GameObject.Find("Damage Number").GetComponent<Text>();
-        levelText = GameObject.Find("Turret Level").GetComponent<Text>();
+        if(level > 0)
+        {
+            levelText = GameObject.Find("Turret Level").GetComponent<Text>();
+            levelText.text = "Lvl: " + level;
+        }
+        else
+        {
+            levelText = GameObject.Find("Turret Level").GetComponent<Text>();
+            levelText.text = "";
+        }
         if(upgradeCost > 0)
         {
             upgradeText = GameObject.Find("Upgrade Cost").GetComponent<Text>();
@@ -43,7 +52,6 @@ public class TurretInfo : MonoBehaviour {
         nameText.text = turretName;
         fireText.text = "" + fireRate;
         damageText.text = "" + damage;
-        levelText.text = "Lvl: " + level;
         sellText.text = "$" + sellCost;
     }
 }

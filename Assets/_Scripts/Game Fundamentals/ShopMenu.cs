@@ -26,6 +26,12 @@ public class ShopMenu : MonoBehaviour {
         subMenus[0].SetActive(true);
     }
 
+    public void Traps()
+    {
+        typeMenu.SetActive(false);
+        subMenus[1].SetActive(true);
+    }
+
     public void Back()
     {
         for (int i = 0; i < subMenus.Length; i++)
