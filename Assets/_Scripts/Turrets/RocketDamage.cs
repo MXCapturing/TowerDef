@@ -9,10 +9,12 @@ public class RocketDamage : MonoBehaviour {
 
     public float radius;
     public int damage;
+    public int hitDamage;
 
     private void Start()
     {
         transform.LookAt(target);
+        Invoke("Destroy", 2f);
     }
 
     private void Update()
@@ -35,7 +37,7 @@ public class RocketDamage : MonoBehaviour {
     {
         Collider[] col = Physics.OverlapSphere(transform.position, radius);
 
-        foreach(Collider nearbyEnemy in col)
+        foreach (Collider nearbyEnemy in col)
         {
             EnemyHP enemy = nearbyEnemy.GetComponent<EnemyHP>();
             if(enemy != null)
@@ -43,16 +45,22 @@ public class RocketDamage : MonoBehaviour {
                 float proximity = (transform.position - enemy.transform.position).magnitude;
                 float effect = 1 - (proximity / radius);
 
-                damage = Mathf.RoundToInt(damage * effect);
+                hitDamage = Mathf.RoundToInt(damage * effect);
 
-                if(damage < 0)
+                if(hitDamage < 0)
                 {
-                    damage = 0;
+                    hitDamage = 0;
                 }
 
-                enemy.Damage(damage);
+                enemy.Damage(hitDamage);
+                Debug.Log(nearbyEnemy);
+                Debug.Log(hitDamage);
             }
         }
+    }
+
+    void Destroy()
+    {
         Destroy(this.gameObject);
     }
 }

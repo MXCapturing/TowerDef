@@ -720,7 +720,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd1e6d4b4050ee41bc0be36689ad4fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 10000
+  hp: 1000
 --- !u!54 &176000647
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -903,7 +903,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd1e6d4b4050ee41bc0be36689ad4fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 10000
+  hp: 1000
 --- !u!54 &231856040
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1876,7 +1876,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd1e6d4b4050ee41bc0be36689ad4fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 10000
+  hp: 1000
 --- !u!54 &627163017
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3966,6 +3966,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11414154, guid: c391f12a928274acab8576bb6030641d, type: 2}
+      propertyPath: gunsIHave.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 479812, guid: c391f12a928274acab8576bb6030641d, type: 2}
       propertyPath: m_LocalPosition.x
       value: 18.50965
@@ -4049,6 +4053,14 @@ Prefab:
     - target: {fileID: 102540, guid: c391f12a928274acab8576bb6030641d, type: 2}
       propertyPath: m_Name
       value: PlayerCam
+      objectReference: {fileID: 0}
+    - target: {fileID: 11414154, guid: c391f12a928274acab8576bb6030641d, type: 2}
+      propertyPath: gunsIHave.Array.data[1]
+      value: NewGun_semi
+      objectReference: {fileID: 0}
+    - target: {fileID: 11414154, guid: c391f12a928274acab8576bb6030641d, type: 2}
+      propertyPath: gunsIHave.Array.data[0]
+      value: NewGun_auto
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c391f12a928274acab8576bb6030641d, type: 2}
@@ -6036,7 +6048,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd1e6d4b4050ee41bc0be36689ad4fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 10000
+  hp: 1000
 --- !u!1 &2031174195
 GameObject:
   m_ObjectHideFlags: 0
@@ -6070,7 +6082,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd1e6d4b4050ee41bc0be36689ad4fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 10000
+  hp: 1000
 --- !u!54 &2031174197
 Rigidbody:
   m_ObjectHideFlags: 0
