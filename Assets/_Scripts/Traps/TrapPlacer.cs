@@ -6,7 +6,9 @@ public class TrapPlacer : MonoBehaviour {
 
     public GameObject trap;
     public int xSize;
+    public int ySize;
     public int zSize;
+    public float yAxis;
     public LayerMask hitlayers;
 
     // Use this for initialization
@@ -31,8 +33,9 @@ public class TrapPlacer : MonoBehaviour {
                 {
                     Debug.Log("Place");
                     GameObject newObject = Instantiate(trap, hitInfo.point, Quaternion.identity) as GameObject;
-                    newObject.transform.localScale = new Vector3(xSize, 50, zSize);
+                    newObject.transform.localScale = new Vector3(xSize, ySize, zSize);
                     newObject.transform.rotation = hitInfo.transform.rotation;
+                    newObject.transform.position = new Vector3(newObject.transform.position.x, yAxis, newObject.transform.position.z);
                     ShopMenu.instance.shopMenu.SetActive(true);
                     References.instance.trapMap.SetActive(false);
                     References.instance.trapCam.SetActive(false);
@@ -52,7 +55,7 @@ public class TrapPlacer : MonoBehaviour {
             References.instance.camView.transform.position = hitInfo.point + new Vector3(0,25,0);
         }
 
-        transform.localScale = new Vector3(xSize , 50 , zSize );
+        transform.localScale = new Vector3(xSize , ySize , zSize );
         if (Physics.Raycast(ray, out hitInfo))
         {         
             if (hitInfo.transform.gameObject.tag == "TrapMap")

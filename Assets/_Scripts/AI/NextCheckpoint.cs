@@ -11,6 +11,7 @@ public class NextCheckpoint : MonoBehaviour {
         if(other.tag == "Enemy")
         {
             other.GetComponent<NavmeshTarget>().agent.SetDestination(checkpoint.transform.position);
+            other.GetComponent<NavmeshTarget>().target = checkpoint;
         }
     }
 }

@@ -8,7 +8,13 @@ public class NavmeshTarget : MonoBehaviour {
     public NavMeshAgent agent;
     private GamePhases phases;
 
+    public GameObject target;
+    public GameObject nextTarget;
+
+    public GameObject targetFinder;
+
     public bool trapped;
+    public float maxSpeed;
 
 	// Use this for initialization
 	void Start () {
@@ -20,11 +26,20 @@ public class NavmeshTarget : MonoBehaviour {
 	void Update () {
         if(phases.gamePhases == Phases.FPS && trapped == false)
         {
-            agent.speed = 3.5f;
+            agent.speed = maxSpeed;
         }
         if(phases.gamePhases == Phases.Build || trapped == true)
         {
             agent.speed = 0;
+        }
+
+        if(target == null)
+        {
+            targetFinder.SetActive(true);
+        }
+        else
+        {
+            targetFinder.SetActive(false);
         }
 	}
 }

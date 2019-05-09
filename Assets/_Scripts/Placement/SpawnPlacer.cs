@@ -9,6 +9,7 @@ public class SpawnPlacer : MonoBehaviour {
     public GameObject rocketlauncher;
     public GameObject landmine;
     public GameObject bearTrap;
+    public GameObject fence;
 
     public void SpawnMachineGun()
     {
@@ -38,5 +39,11 @@ public class SpawnPlacer : MonoBehaviour {
     {
         ShopMenu.instance.shopMenu.SetActive(false);
         Instantiate(bearTrap, Vector3.zero, Quaternion.identity);
+    }
+
+    public void SpawnFence()
+    {
+        ShopMenu.instance.shopMenu.SetActive(false);
+        Instantiate(fence, Vector3.zero, Quaternion.identity);
     }
 }
