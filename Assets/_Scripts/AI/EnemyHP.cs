@@ -20,6 +20,6 @@ public class EnemyHP : MonoBehaviour {
 
     private void Update()
     {
-        Debug.DrawRay(transform.position, Vector3.up * hp);
+        Debug.DrawRay(transform.position, Vector3.up * hp, Color.red);
     }
 }

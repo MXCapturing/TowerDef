@@ -6,13 +6,15 @@ public class Landmine : MonoBehaviour {
 
     public int hitDamage;
     public float radius;
+    public bool triggered = false;
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Enemy")
+        if(other.tag == "Enemy" && triggered == false)
         {
             Invoke("DoDamage", 1f);
             Invoke("Destroy", 1.5f);
+            triggered = true;
         }
     }
 
