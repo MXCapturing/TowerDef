@@ -8,11 +8,11 @@ TagManager:
   - Enemy
   - SecondCamera
   - BulletSpawn
-  - Dummie
   - Turret
   - Map
   - Weapon
   - Trap
+  - TrapMap
   layers:
   - Default
   - TransparentFX

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TrapPlacer : MonoBehaviour {
 
-    private GridTD grid;
     public GameObject trap;
     public int xSize;
     public int zSize;
@@ -12,7 +11,9 @@ public class TrapPlacer : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        grid = FindObjectOfType<GridTD>();
+        References.instance.trapMap.SetActive(true);
+        References.instance.camView.SetActive(true);
+        References.instance.trapCam.SetActive(true);
     }
 	
 	// Update is called once per frame
@@ -22,12 +23,22 @@ public class TrapPlacer : MonoBehaviour {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         if (Input.GetMouseButtonDown(0))
-        {       
+        {
+            Debug.Log("Click");
             if (Physics.Raycast(ray, out hitInfo))
             {
-                if(hitInfo.transform.gameObject.name == "Map")
+                if(hitInfo.transform.gameObject.tag == "TrapMap" && hitInfo.transform.tag != "Trap")
                 {
-                    PlaceCubeNear(hitInfo.point);
+                    Debug.Log("Place");
+                    GameObject newObject = Instantiate(trap, hitInfo.point, Quaternion.identity) as GameObject;
+                    newObject.transform.localScale = new Vector3(xSize, 50, zSize);
+                    newObject.transform.rotation = hitInfo.transform.rotation;
+                    ShopMenu.instance.shopMenu.SetActive(true);
+                    References.instance.trapMap.SetActive(false);
+                    References.instance.trapCam.SetActive(false);
+                    References.instance.camView.SetActive(false);
+                    Destroy(this.gameObject);
+                    //PlaceCubeNear(hitInfo.point);
                 }
             }
         }
@@ -36,11 +47,15 @@ public class TrapPlacer : MonoBehaviour {
             ShopMenu.instance.shopMenu.SetActive(true);
             Destroy(this.gameObject);
         }
-
-        transform.localScale = new Vector3(xSize * grid.size, 50 * grid.size, zSize * grid.size);
-        if (Physics.Raycast(ray, out hitInfo))
+        if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity, hitlayers))
         {
-            if (hitInfo.transform.gameObject.tag == "Map")
+            References.instance.camView.transform.position = hitInfo.point + new Vector3(0,25,0);
+        }
+
+        transform.localScale = new Vector3(xSize , 50 , zSize );
+        if (Physics.Raycast(ray, out hitInfo))
+        {         
+            if (hitInfo.transform.gameObject.tag == "TrapMap")
             {
                 GetComponent<Renderer>().material.color = new Color(0, 1, 0, 0.39f);
                 Debug.Log(hitInfo.transform.gameObject.name);
@@ -53,13 +68,12 @@ public class TrapPlacer : MonoBehaviour {
         }
     }
 
-    private void PlaceCubeNear(Vector3 clickPoint)
+    /*private void PlaceCubeNear(Vector3 clickPoint)
     {
         Debug.Log("PlaceMine");
-        var finalPosition = grid.GetNearestPointOnGrid(clickPoint);
-        GameObject newObject = Instantiate(trap, finalPosition, Quaternion.identity) as GameObject;
-        newObject.transform.localScale = new Vector3(xSize * grid.size, 50 * grid.size, zSize * grid.size);
+        GameObject newObject = Instantiate(trap, clickPoint, Quaternion.identity) as GameObject;
+        newObject.transform.localScale = new Vector3(xSize, 50 , zSize);
         ShopMenu.instance.shopMenu.SetActive(true);
         Destroy(this.gameObject);
-    }
+    }*/
 }

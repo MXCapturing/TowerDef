@@ -19,7 +19,7 @@ public class FollowMouse : MonoBehaviour {
         RaycastHit hit;
         if (Physics.Raycast(objectRay, out hit, Mathf.Infinity, hitLayers))
         {
-            hitRound = Vector3Int.RoundToInt(hit.point);
+            hitRound = Vector3Int.RoundToInt(hit.point) + new Vector3Int(0,1,0);
             this.transform.position = hitRound;
         }
     }

@@ -116,9 +116,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4041598696067870}
   - component: {fileID: 95177942971701114}
+  - component: {fileID: 114150480261584544}
+  - component: {fileID: 114575080478220686}
+  - component: {fileID: 65323591176536434}
   m_Layer: 0
   m_Name: Bear Trap
-  m_TagString: Untagged
+  m_TagString: Trap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -130,8 +133,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1982474535658550}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0, y: 5, z: 22.85}
+  m_LocalScale: {x: 150, y: 75, z: 150}
   m_Children:
   - {fileID: 4914266604618958}
   - {fileID: 4730951538985218}
@@ -346,6 +349,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1700665588604514}
   m_Mesh: {fileID: 4300002, guid: 81498302912eee64798867ece05173a8, type: 3}
+--- !u!65 &65323591176536434
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1982474535658550}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.03, y: 0.005, z: 0.023}
+  m_Center: {x: 0, y: 0.002, z: 0}
 --- !u!95 &95177942971701114
 Animator:
   serializedVersion: 3
@@ -355,7 +370,7 @@ Animator:
   m_GameObject: {fileID: 1982474535658550}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 81498302912eee64798867ece05173a8, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e49fb6e42a0548345b0991f8ef2be8bb, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -364,3 +379,36 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114150480261584544
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1982474535658550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bac4baea61757d946b761d95dc17e4c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turretName: Bear Trap
+  fireRate: 1
+  damage: 20
+  level: 0
+  upgradeCost: 0
+  sellCost: 100
+  upgradeNumber: 0
+--- !u!114 &114575080478220686
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1982474535658550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d842ee8119fe0443a68ae18a006cabb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 5
+  enemy: {fileID: 0}
+  trappedEnemy: 0
+  clamp: {fileID: 95177942971701114}

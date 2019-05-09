@@ -11,7 +11,7 @@ public class SelectonGrid : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (GamePhases.instance.gamePhases == Phases.Build && Input.GetMouseButtonDown(0) && ShopMenu.instance.shopMenu.activeSelf == false)
+        if (GamePhases.instance.gamePhases == Phases.Build && Input.GetMouseButtonDown(0) && ShopMenu.instance.mapView == true)
         {
             RaycastHit hitInfo = new RaycastHit();
             bool hit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo);

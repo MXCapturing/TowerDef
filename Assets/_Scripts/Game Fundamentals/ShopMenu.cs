@@ -14,6 +14,8 @@ public class ShopMenu : MonoBehaviour {
 
     public Image darkPanel;
 
+    public bool mapView;
+
 
     private void Awake()
     {
@@ -43,12 +45,14 @@ public class ShopMenu : MonoBehaviour {
 
     public void ViewMap()
     {
+        mapView = true;
         shopMenu.SetActive(false);
         mapBack.SetActive(true);
     }
 
     public void MapBack()
     {
+        mapView = false;
         References.instance.turretInfo.SetActive(false);
         shopMenu.SetActive(true);
         mapBack.SetActive(false);

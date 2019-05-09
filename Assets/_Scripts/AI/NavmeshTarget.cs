@@ -8,6 +8,8 @@ public class NavmeshTarget : MonoBehaviour {
     public NavMeshAgent agent;
     private GamePhases phases;
 
+    public bool trapped;
+
 	// Use this for initialization
 	void Start () {
         agent = GetComponent<NavMeshAgent>();
@@ -16,11 +18,11 @@ public class NavmeshTarget : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if(phases.gamePhases == Phases.FPS)
+        if(phases.gamePhases == Phases.FPS && trapped == false)
         {
             agent.speed = 3.5f;
         }
-        if(phases.gamePhases == Phases.Build)
+        if(phases.gamePhases == Phases.Build || trapped == true)
         {
             agent.speed = 0;
         }
