@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
 public class BulletScript : MonoBehaviour {
 
 	[Tooltip("Furthest distance bullet will look for target")]
@@ -16,6 +17,7 @@ public class BulletScript : MonoBehaviour {
 	public LayerMask ignoreLayer;
 
     public int damage;
+    public string bulletType;
 
 	/*
 	* Uppon bullet creation with this script attatched,
@@ -24,25 +26,62 @@ public class BulletScript : MonoBehaviour {
 	*/
 	void Update () {
 
-		if(Physics.Raycast(transform.position, transform.forward,out hit, maxDistance, ~ignoreLayer)){
-			if(decalHitWall){
-				if(hit.transform.tag == "LevelPart"){
-					Instantiate(decalHitWall, hit.point + hit.normal * floatInfrontOfWall, Quaternion.LookRotation(hit.normal));
-					Destroy(gameObject);
-				}
-				if(hit.transform.tag == "Dummie"){
-					Instantiate(bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
-					Destroy(gameObject);
-				}
-                if(hit.transform.tag == "Enemy")
+        Debug.Log(bulletType);
+        if(bulletType == "pistol" || bulletType == "assault" || bulletType == "sniper")
+        {
+            if (Physics.Raycast(transform.position, transform.forward, out hit, maxDistance, ~ignoreLayer))
+            {
+                if (decalHitWall)
                 {
-                    hit.transform.GetComponent<EnemyHP>().Damage(damage);
-                    Debug.Log("Hit");
-                    Debug.Log(damage);
+                    if (hit.transform.tag == "Map")
+                    {
+                        Instantiate(decalHitWall, hit.point + hit.normal * floatInfrontOfWall, Quaternion.LookRotation(hit.normal));
+                        Destroy(gameObject);
+                    }
+                    if (hit.transform.tag == "Dummie")
+                    {
+                        Instantiate(bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
+                        Destroy(gameObject);
+                    }
+                    if (hit.transform.tag == "Enemy")
+                    {
+                        hit.transform.GetComponent<EnemyHP>().Damage(damage);
+                        Debug.Log("Hit");
+                        Debug.Log(damage);
+                    }
                 }
-			}		
-			Destroy(gameObject);
-		}
+                Destroy(gameObject);
+            }
+        }
+
+        if(bulletType == "shotgun")
+        {
+            for (int i = 0; i < BulletNumbers.instance.shotgunBullets; i++)
+            {
+                var v3Offset = transform.up * Random.Range(0.0f, BulletNumbers.instance.shotgunSpread);
+                v3Offset = Quaternion.AngleAxis(Random.Range(0.0f, 360.0f), transform.forward) * v3Offset;
+                var v3Hit = transform.forward + v3Offset;
+
+                if(Physics.Raycast(transform.position, v3Hit, out hit, maxDistance, ~ignoreLayer))
+                {
+                    if (decalHitWall)
+                    {
+                        if(hit.transform.tag == "Map")
+                        {
+                            Instantiate(decalHitWall, hit.point + hit.normal * floatInfrontOfWall, Quaternion.LookRotation(hit.normal));
+                            Destroy(gameObject);
+                        }
+                        if (hit.transform.tag == "Enemy")
+                        {
+                            hit.transform.GetComponent<EnemyHP>().Damage(damage);
+                            Debug.Log("Hit");
+                            Debug.Log(damage);
+                        }
+                    }
+                    Destroy(gameObject);
+                }
+            }
+        }
 		Destroy(gameObject, 0.1f);
 	}
 

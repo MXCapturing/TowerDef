@@ -2438,43 +2438,11 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 580686094}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &586795753 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 102540, guid: c391f12a928274acab8576bb6030641d, type: 2}
-  m_PrefabInternal: {fileID: 1244777995}
---- !u!114 &586795759
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 586795753}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42f000c2acf2f254fb3a4451f7a8b47d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shopCam: {fileID: 282840813}
-  playerCam: {fileID: 1018202634}
-  plCamFadeIn: {fileID: 586795760}
-  inOrOut: 0
---- !u!95 &586795760
+--- !u!95 &586795760 stripped
 Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 586795753}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9b558220ed5da3b41a598e8909c845e7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_PrefabParentObject: {fileID: 95478850033958536, guid: c391f12a928274acab8576bb6030641d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1244777995}
 --- !u!1 &594462656
 GameObject:
   m_ObjectHideFlags: 0
@@ -2991,6 +2959,7 @@ GameObject:
   - component: {fileID: 705540175}
   - component: {fileID: 705540176}
   - component: {fileID: 705540177}
+  - component: {fileID: 705540178}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -3063,6 +3032,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   money: 0
+--- !u!114 &705540178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 705540172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4bae77fc12694046b21b3f18a17a339, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pistolBulletsInGun: 0
+  pistolBulletsInStock: 0
+  pistolMaxInGun: 0
+  pistolDamage: 0
+  assaultBulletsInGun: 6
+  assaultBulletsInStock: 20
+  assaultMaxInGun: 10
+  assaultDamage: 5
+  shotgunBulletsInGun: 5
+  shotgunBulletsInStock: 5
+  shotgunMaxInGun: 5
+  shotgunDamage: 5
+  shotgunBullets: 8
+  shotgunSpread: 0.5
+  sniperBulletsInGun: 2
+  sniperBulletsInStock: 10
+  sniperMaxInGun: 5
+  sniperDamage: 20
 --- !u!1 &717160474
 GameObject:
   m_ObjectHideFlags: 0
@@ -5703,10 +5701,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 11414154, guid: c391f12a928274acab8576bb6030641d, type: 2}
-      propertyPath: gunsIHave.Array.size
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 479812, guid: c391f12a928274acab8576bb6030641d, type: 2}
       propertyPath: m_LocalPosition.x
       value: 18.50965
@@ -5739,66 +5733,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 154458, guid: c391f12a928274acab8576bb6030641d, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1962323954856888, guid: c391f12a928274acab8576bb6030641d, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11415148, guid: c391f12a928274acab8576bb6030641d, type: 2}
-      propertyPath: currentSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 173116, guid: c391f12a928274acab8576bb6030641d, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2024722, guid: c391f12a928274acab8576bb6030641d, type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 102540, guid: c391f12a928274acab8576bb6030641d, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 431846, guid: c391f12a928274acab8576bb6030641d, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 431846, guid: c391f12a928274acab8576bb6030641d, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 431846, guid: c391f12a928274acab8576bb6030641d, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 431846, guid: c391f12a928274acab8576bb6030641d, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 431846, guid: c391f12a928274acab8576bb6030641d, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 431846, guid: c391f12a928274acab8576bb6030641d, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 102540, guid: c391f12a928274acab8576bb6030641d, type: 2}
-      propertyPath: m_Name
-      value: PlayerCam
-      objectReference: {fileID: 0}
-    - target: {fileID: 11414154, guid: c391f12a928274acab8576bb6030641d, type: 2}
-      propertyPath: gunsIHave.Array.data[1]
-      value: NewGun_semi
-      objectReference: {fileID: 0}
-    - target: {fileID: 11414154, guid: c391f12a928274acab8576bb6030641d, type: 2}
-      propertyPath: gunsIHave.Array.data[0]
-      value: NewGun_auto
-      objectReference: {fileID: 0}
+    - target: {fileID: 114797497815119802, guid: c391f12a928274acab8576bb6030641d,
+        type: 2}
+      propertyPath: shopCam
+      value: 
+      objectReference: {fileID: 282840813}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c391f12a928274acab8576bb6030641d, type: 2}
   m_IsPrefabParent: 0

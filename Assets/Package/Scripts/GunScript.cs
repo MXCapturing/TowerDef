@@ -3,7 +3,7 @@ using System.Collections;
 //using UnityStandardAssets.ImageEffects;
 
 public enum GunStyles{
-	nonautomatic,automatic
+	pistol, assault, shotgun, sniper 
 }
 public class GunScript : MonoBehaviour {
 	[Tooltip("Selects type of waepon to shoot rapidly or one bullet per click.")]
@@ -20,17 +20,18 @@ public class GunScript : MonoBehaviour {
 
 	[Header("Bullet properties")]
 	[Tooltip("Preset value to tell with how many bullets will our waepon spawn aside.")]
-	public float bulletsIHave = 20;
+	public int bulletsIHave;
 	[Tooltip("Preset value to tell with how much bullets will our waepon spawn inside rifle.")]
-	public float bulletsInTheGun = 5;
+	public int bulletsInTheGun;
 	[Tooltip("Preset value to tell how much bullets can one magazine carry.")]
-	public float amountOfBulletsPerLoad = 5;
+	public int amountOfBulletsPerLoad;
 
 	private Transform player;
 	private Camera cameraComponent;
 	private Transform gunPlaceHolder;
 
 	private PlayerMovementScript pmS;
+    private BulletNumbers bulletSets;
 
     public int damage;
 
@@ -57,7 +58,42 @@ public class GunScript : MonoBehaviour {
 		rotationLastY = mls.currentYRotation;
 		rotationLastX= mls.currentCameraXRotation;
 
-	}
+        bulletSets = BulletNumbers.instance;
+        SetStats();
+
+    }
+
+    public void SetStats()
+    {
+        if(currentStyle == GunStyles.pistol)
+        {
+            bulletsInTheGun = bulletSets.pistolBulletsInGun;
+            bulletsIHave = bulletSets.pistolBulletsInStock;
+            amountOfBulletsPerLoad = bulletSets.pistolMaxInGun;
+            damage = bulletSets.pistolDamage;
+        }
+        if (currentStyle == GunStyles.assault)
+        {
+            bulletsInTheGun = bulletSets.assaultBulletsInGun;
+            bulletsIHave = bulletSets.assaultBulletsInStock;
+            amountOfBulletsPerLoad = bulletSets.assaultMaxInGun;
+            damage = bulletSets.assaultDamage;
+        }
+        if (currentStyle == GunStyles.shotgun)
+        {
+            bulletsInTheGun = bulletSets.shotgunBulletsInGun;
+            bulletsIHave = bulletSets.shotgunBulletsInStock;
+            amountOfBulletsPerLoad = bulletSets.shotgunMaxInGun;
+            damage = bulletSets.shotgunDamage;
+        }
+        if (currentStyle == GunStyles.sniper)
+        {
+            bulletsInTheGun = bulletSets.sniperBulletsInGun;
+            bulletsIHave = bulletSets.sniperBulletsInStock;
+            amountOfBulletsPerLoad = bulletSets.sniperMaxInGun;
+            damage = bulletSets.sniperDamage;
+        }
+    }
 
 
 	[HideInInspector]
@@ -340,12 +376,12 @@ public class GunScript : MonoBehaviour {
 	void Shooting(){
 
 		if (!meeleAttack) {
-			if (currentStyle == GunStyles.nonautomatic) {
+			if (currentStyle == GunStyles.pistol || currentStyle == GunStyles.shotgun || currentStyle == GunStyles.sniper) {
 				if (Input.GetButtonDown ("Fire1")) {
 					ShootMethod ();
 				}
 			}
-			if (currentStyle == GunStyles.automatic) {
+			if (currentStyle == GunStyles.assault) {
 				if (Input.GetButton ("Fire1")) {
 					ShootMethod ();
 				}
@@ -429,6 +465,7 @@ public class GunScript : MonoBehaviour {
                 {
                     GameObject bulletshot = Instantiate(bullet, bulletSpawnPlace.transform.position, bulletSpawnPlace.transform.rotation);
                     bulletshot.GetComponent<BulletScript>().damage = damage;
+                    bulletshot.GetComponent<BulletScript>().bulletType = currentStyle.ToString();
                 }					
 				else
 					print ("Missing the bullet prefab");
@@ -494,7 +531,7 @@ public class GunScript : MonoBehaviour {
 					bulletsIHave -= amountOfBulletsPerLoad - bulletsInTheGun;
 					bulletsInTheGun = amountOfBulletsPerLoad;
 				} else if (bulletsIHave - amountOfBulletsPerLoad < 0) {
-					float valueForBoth = amountOfBulletsPerLoad - bulletsInTheGun;
+					int valueForBoth = amountOfBulletsPerLoad - bulletsInTheGun;
 					if (bulletsIHave - valueForBoth < 0) {
 						bulletsInTheGun += bulletsIHave;
 						bulletsIHave = 0;

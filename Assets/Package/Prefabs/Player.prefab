@@ -12,8 +12,10 @@ GameObject:
   - component: {fileID: 9250748}
   - component: {fileID: 12459126}
   - component: {fileID: 8154184}
+  - component: {fileID: 95478850033958536}
+  - component: {fileID: 114797497815119802}
   m_Layer: 9
-  m_Name: Main Camera
+  m_Name: PlayerCam
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57,7 +59,7 @@ GameObject:
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &196378
 GameObject:
   m_ObjectHideFlags: 1
@@ -343,8 +345,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentGun: {fileID: 0}
   gunsIHave:
-  - NewGun_semi
-  - NewGun_auto
+  - NewGun_Assault
+  - NewGun_Sniper
   icons: []
   switchWeaponCooldown: 0
   menuStyle: 0
@@ -363,7 +365,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97308ddfdff1d496cb759a41c819b13f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentSpeed: 0
+  currentSpeed: 1
   cameraMain: {fileID: 0}
   jumpForce: 15000
   cameraPosition: {x: 0, y: 0, z: 0}
@@ -1498,3 +1500,36 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!95 &95478850033958536
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 102540}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9b558220ed5da3b41a598e8909c845e7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114797497815119802
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 102540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42f000c2acf2f254fb3a4451f7a8b47d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shopCam: {fileID: 0}
+  playerCam: {fileID: 173116}
+  plCamFadeIn: {fileID: 95478850033958536}
+  inOrOut: 0
