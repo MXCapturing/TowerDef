@@ -13,6 +13,8 @@ public class NavmeshTarget : MonoBehaviour {
 
     public GameObject targetFinder;
 
+    public Animator _anim;
+
     public bool trapped;
     public float maxSpeed;
 
@@ -27,10 +29,12 @@ public class NavmeshTarget : MonoBehaviour {
         if(phases.gamePhases == Phases.FPS && trapped == false)
         {
             agent.speed = maxSpeed;
+            _anim.SetBool("Walking", true);
         }
         if(phases.gamePhases == Phases.Build || trapped == true)
         {
             agent.speed = 0;
+            _anim.SetBool("Walking", false);
         }
 
         if(target == null)
