@@ -13,7 +13,6 @@ public class FindTarget : MonoBehaviour {
             this.transform.root.GetComponent<Rigidbody>().isKinematic = true;
             this.transform.root.GetComponent<NavmeshTarget>().target = other.GetComponent<NavmeshTarget>().target;
             this.transform.root.GetComponent<NavmeshTarget>().agent.SetDestination(this.transform.root.GetComponent<NavmeshTarget>().target.transform.position);
-            this.transform.root.GetComponent<Rigidbody>().isKinematic = false;
         }
     }
 }

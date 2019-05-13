@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4809252283766838}
   - component: {fileID: 65080733562569478}
   - component: {fileID: 114652353559289208}
-  m_Layer: 0
-  m_Name: Fence Trigger
+  m_Layer: 2
+  m_Name: FTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

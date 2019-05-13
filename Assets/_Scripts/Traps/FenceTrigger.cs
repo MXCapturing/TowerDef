@@ -36,7 +36,6 @@ public class FenceTrigger : MonoBehaviour {
             enemies[i].GetComponent<Rigidbody>().isKinematic = true;
             enemies[i].GetComponent<NavmeshTarget>().target = enemies[i].GetComponent<NavmeshTarget>().nextTarget;
             enemies[i].GetComponent<NavmeshTarget>().agent.SetDestination(enemies[i].GetComponent<NavmeshTarget>().target.transform.position);
-            enemies[i].GetComponent<Rigidbody>().isKinematic = false;
         }
     }
 }

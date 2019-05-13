@@ -83,47 +83,38 @@ public class GunInventory : MonoBehaviour {
 		/*
 		 * Scrolling wheel waepons changing
 		 */
-         if(gunsIHave.Count > 1)
-        {
-            if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetAxis("Mouse ScrollWheel") > 0)
-            {
-                switchWeaponCooldown = 0;
+		if(Input.GetKeyDown(KeyCode.UpArrow) || Input.GetAxis("Mouse ScrollWheel") > 0){
+			switchWeaponCooldown = 0;
 
-                currentGunCounter++;
-                if (currentGunCounter > gunsIHave.Count - 1)
-                {
-                    currentGunCounter = 0;
-                }
-                StartCoroutine("Spawn", currentGunCounter);
-            }
-            if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetAxis("Mouse ScrollWheel") < 0)
-            {
-                switchWeaponCooldown = 0;
+			currentGunCounter++;
+			if(currentGunCounter > gunsIHave.Count-1){
+				currentGunCounter = 0;
+			}
+			StartCoroutine("Spawn",currentGunCounter);
+		}
+		if(Input.GetKeyDown(KeyCode.DownArrow) || Input.GetAxis("Mouse ScrollWheel") < 0){
+			switchWeaponCooldown = 0;
 
-                currentGunCounter--;
-                if (currentGunCounter < 0)
-                {
-                    currentGunCounter = gunsIHave.Count - 1;
-                }
-                StartCoroutine("Spawn", currentGunCounter);
-            }
+			currentGunCounter--;
+			if(currentGunCounter < 0){
+				currentGunCounter = gunsIHave.Count-1;
+			}
+			StartCoroutine("Spawn",currentGunCounter);
+		}
 
-            /*
-             * Keypad numbers
-             */
-            if (Input.GetKeyDown(KeyCode.Alpha1) && currentGunCounter != 0)
-            {
-                switchWeaponCooldown = 0;
-                currentGunCounter = 0;
-                StartCoroutine("Spawn", currentGunCounter);
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha2) && currentGunCounter != 1)
-            {
-                switchWeaponCooldown = 0;
-                currentGunCounter = 1;
-                StartCoroutine("Spawn", currentGunCounter);
-            }
-        }
+		/*
+		 * Keypad numbers
+		 */
+		if(Input.GetKeyDown(KeyCode.Alpha1) && currentGunCounter != 0){
+			switchWeaponCooldown = 0;
+			currentGunCounter = 0;
+			StartCoroutine("Spawn",currentGunCounter);
+		}
+		if(Input.GetKeyDown(KeyCode.Alpha2) && currentGunCounter != 1){
+			switchWeaponCooldown = 0;
+			currentGunCounter = 1;
+			StartCoroutine("Spawn",currentGunCounter);
+		}
 
 	}
 
@@ -139,32 +130,7 @@ public class GunInventory : MonoBehaviour {
 		if(currentGun){
 			if(currentGun.name.Contains("Gun")){
 
-                if(currentGun.GetComponent<GunScript>().currentStyle == GunStyles.pistol)
-                {
-                    BulletNumbers.instance.pistolBulletsInGun = currentGun.GetComponent<GunScript>().bulletsInTheGun;
-                    BulletNumbers.instance.pistolBulletsInStock = currentGun.GetComponent<GunScript>().bulletsIHave;
-                    BulletNumbers.instance.pistolMaxInGun = currentGun.GetComponent<GunScript>().amountOfBulletsPerLoad;
-                }
-                if (currentGun.GetComponent<GunScript>().currentStyle == GunStyles.assault)
-                {
-                    BulletNumbers.instance.assaultBulletsInGun = currentGun.GetComponent<GunScript>().bulletsInTheGun;
-                    BulletNumbers.instance.assaultBulletsInStock = currentGun.GetComponent<GunScript>().bulletsIHave;
-                    BulletNumbers.instance.assaultMaxInGun = currentGun.GetComponent<GunScript>().amountOfBulletsPerLoad;
-                }
-                if (currentGun.GetComponent<GunScript>().currentStyle == GunStyles.shotgun)
-                {
-                    BulletNumbers.instance.shotgunBulletsInGun = currentGun.GetComponent<GunScript>().bulletsInTheGun;
-                    BulletNumbers.instance.shotgunBulletsInStock = currentGun.GetComponent<GunScript>().bulletsIHave;
-                    BulletNumbers.instance.shotgunMaxInGun = currentGun.GetComponent<GunScript>().amountOfBulletsPerLoad;
-                }
-                if (currentGun.GetComponent<GunScript>().currentStyle == GunStyles.sniper)
-                {
-                    BulletNumbers.instance.sniperBulletsInGun = currentGun.GetComponent<GunScript>().bulletsInTheGun;
-                    BulletNumbers.instance.sniperBulletsInStock = currentGun.GetComponent<GunScript>().bulletsIHave;
-                    BulletNumbers.instance.sniperMaxInGun = currentGun.GetComponent<GunScript>().amountOfBulletsPerLoad;
-                }
-
-                currentHAndsAnimator.SetBool("changingWeapon", true);
+				currentHAndsAnimator.SetBool("changingWeapon", true);
 
 				yield return new WaitForSeconds(0.8f);//0.8 time to change waepon, but since there is no change weapon animation there is no need to wait fo weapon taken down
 				Destroy(currentGun);

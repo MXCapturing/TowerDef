@@ -20,7 +20,7 @@ public class PlayerMovementScript : MonoBehaviour {
 	 */
 	void Awake(){
 		rb = GetComponent<Rigidbody>();
-		cameraMain = transform.Find("PlayerCam").transform;
+		cameraMain = transform.Find("Main Camera").transform;
 		bulletSpawn = cameraMain.Find ("BulletSpawn").transform;
 		ignoreLayer = 1 << LayerMask.NameToLayer ("Player");
 
@@ -110,7 +110,7 @@ public class PlayerMovementScript : MonoBehaviour {
 			if (RayCastGrounded ()) { //for walk sounsd using this because suraface is not straigh			
 				if (currentSpeed > 1) {
 					//				print ("unutra sam");
-					if (maxSpeed == 3) {
+					if (maxSpeed == 15) {
 						//	print ("tu sem");
 						if (!_walkSound.isPlaying) {
 							//	print ("playam hod");

@@ -8,6 +8,9 @@ public class EnemyAttack : MonoBehaviour {
     public float attackDelay;
 
     public GameObject attackHitbox;
+    public Animator _anim;
+
+    public TargetInRange inRange;
 
 	// Use this for initialization
 	void Start () {
@@ -21,9 +24,15 @@ public class EnemyAttack : MonoBehaviour {
 
     void Attack()
     {
-        if(this.GetComponent<NavmeshTarget>().target.tag == "Trap")
+        if(inRange.target.Count > 0)
         {
-            attackHitbox.SetActive(true);
+            int attack = Random.Range(0, 3);
+            _anim.SetTrigger("Attack " + attack);
         }
+    }
+
+    public void Hitbox()
+    {
+        attackHitbox.SetActive(true);
     }
 }
