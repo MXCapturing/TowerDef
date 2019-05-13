@@ -15,8 +15,6 @@ public class NavmeshTarget : MonoBehaviour {
 
     public Animator _anim;
 
-    public bool attacking;
-    public bool dead;
     public bool trapped;
     public float maxSpeed;
 
@@ -28,17 +26,14 @@ public class NavmeshTarget : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if(phases.gamePhases == Phases.FPS && trapped == false && dead == false && attacking == false)
+        if(phases.gamePhases == Phases.FPS && trapped == false)
         {
             agent.speed = maxSpeed;
-            agent.isStopped = false;
             _anim.SetBool("Walking", true);
         }
-        if(phases.gamePhases == Phases.Build || trapped == true || dead == true || attacking == true)
+        if(phases.gamePhases == Phases.Build || trapped == true)
         {
             agent.speed = 0;
-            agent.velocity = Vector3.zero;
-            agent.isStopped = true;
             _anim.SetBool("Walking", false);
         }
 
@@ -51,17 +46,4 @@ public class NavmeshTarget : MonoBehaviour {
             targetFinder.SetActive(false);
         }
 	}
-
-    private void FixedUpdate()
-    {
-        if(GetComponent<Rigidbody>().isKinematic == true)
-        {
-           // Invoke("KinematicOff", 0.5f);
-        }
-    }
-
-    void KinematicOff()
-    {
-        GetComponent<Rigidbody>().isKinematic = false;
-    }
 }

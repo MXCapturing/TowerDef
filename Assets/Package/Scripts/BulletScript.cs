@@ -38,17 +38,16 @@ public class BulletScript : MonoBehaviour {
                         Instantiate(decalHitWall, hit.point + hit.normal * floatInfrontOfWall, Quaternion.LookRotation(hit.normal));
                         Destroy(gameObject);
                     }
-                    if (hit.collider.tag == "Enemy")
+                    if (hit.transform.tag == "Dummie")
+                    {
+                        Instantiate(bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
+                        Destroy(gameObject);
+                    }
+                    if (hit.transform.tag == "Enemy")
                     {
                         hit.transform.GetComponent<EnemyHP>().Damage(damage);
                         Debug.Log("Hit");
                         Debug.Log(damage);
-                    }
-                    if (hit.collider.tag == "EnemyHead")
-                    {
-                        hit.transform.root.GetComponent<EnemyHP>().Damage(damage * 2);
-                        Debug.Log("HeadHit");
-                        Debug.Log(damage * 2);
                     }
                 }
                 Destroy(gameObject);
@@ -72,17 +71,11 @@ public class BulletScript : MonoBehaviour {
                             Instantiate(decalHitWall, hit.point + hit.normal * floatInfrontOfWall, Quaternion.LookRotation(hit.normal));
                             Destroy(gameObject);
                         }
-                        if (hit.collider.tag == "Enemy")
+                        if (hit.transform.tag == "Enemy")
                         {
                             hit.transform.GetComponent<EnemyHP>().Damage(damage);
                             Debug.Log("Hit");
                             Debug.Log(damage);
-                        }
-                        if (hit.collider.tag == "EnemyHead")
-                        {
-                            hit.transform.root.GetComponent<EnemyHP>().Damage(damage * 2);
-                            Debug.Log("HeadHit");
-                            Debug.Log(damage * 2);
                         }
                     }
                     Destroy(gameObject);

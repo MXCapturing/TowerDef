@@ -13,7 +13,6 @@ TagManager:
   - Weapon
   - Trap
   - TrapMap
-  - EnemyHead
   layers:
   - Default
   - TransparentFX

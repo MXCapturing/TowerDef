@@ -30,7 +30,7 @@ public class TurretTarget : MonoBehaviour {
     {
         for (int i = targets.Count - 1; i > -1; i--)
         {
-            if(targets[i] == null || targets[i].GetComponent<NavmeshTarget>().dead == true)
+            if(targets[i] == null)
             {
                 targets.RemoveAt(i);
                 target = null;

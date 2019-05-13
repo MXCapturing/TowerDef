@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class EnemyHP : MonoBehaviour {
 
-    public Animator _anim;
-
     public int hp;
 
     public void Damage(int damage)
@@ -15,16 +13,9 @@ public class EnemyHP : MonoBehaviour {
             hp -= damage;
             if (hp <= 0)
             {
-                this.GetComponent<NavmeshTarget>().dead = true;
-                int dead = Random.Range(0, 4);
-                _anim.SetTrigger("Death " + dead);
+                Destroy(this.gameObject);
             }
         }
-    }
-
-    public void Destroy()
-    {
-        Destroy(this.gameObject);
     }
 
     private void Update()
