@@ -7,6 +7,7 @@ public class EnemyHP : MonoBehaviour {
     public Animator _anim;
 
     public int hp;
+    public int money;
 
     public void Damage(int damage)
     {
@@ -16,6 +17,7 @@ public class EnemyHP : MonoBehaviour {
             if (hp <= 0)
             {
                 this.GetComponent<NavmeshTarget>().dead = true;
+                Currency.instance.money += money;
                 int dead = Random.Range(0, 4);
                 _anim.SetTrigger("Death " + dead);
             }

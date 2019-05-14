@@ -147,9 +147,9 @@ public class GunInventory : MonoBehaviour {
                 }
                 if (currentGun.GetComponent<GunScript>().currentStyle == GunStyles.assault)
                 {
-                    BulletNumbers.instance.assaultBulletsInGun = currentGun.GetComponent<GunScript>().bulletsInTheGun;
-                    BulletNumbers.instance.assaultBulletsInStock = currentGun.GetComponent<GunScript>().bulletsIHave;
-                    BulletNumbers.instance.assaultMaxInGun = currentGun.GetComponent<GunScript>().amountOfBulletsPerLoad;
+                    BulletNumbers.instance.pistolBulletsInGun = currentGun.GetComponent<GunScript>().bulletsInTheGun;
+                    BulletNumbers.instance.pistolBulletsInStock = currentGun.GetComponent<GunScript>().bulletsIHave;
+                    BulletNumbers.instance.pistolMaxInGun = currentGun.GetComponent<GunScript>().amountOfBulletsPerLoad;
                 }
                 if (currentGun.GetComponent<GunScript>().currentStyle == GunStyles.shotgun)
                 {

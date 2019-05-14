@@ -74,10 +74,10 @@ public class GunScript : MonoBehaviour {
         }
         if (currentStyle == GunStyles.assault)
         {
-            bulletsInTheGun = bulletSets.assaultBulletsInGun;
-            bulletsIHave = bulletSets.assaultBulletsInStock;
-            amountOfBulletsPerLoad = bulletSets.assaultMaxInGun;
-            damage = bulletSets.assaultDamage;
+            bulletsInTheGun = bulletSets.pistolBulletsInGun;
+            bulletsIHave = bulletSets.pistolBulletsInStock;
+            amountOfBulletsPerLoad = bulletSets.pistolMaxInGun;
+            damage = bulletSets.pistolDamage;
         }
         if (currentStyle == GunStyles.shotgun)
         {

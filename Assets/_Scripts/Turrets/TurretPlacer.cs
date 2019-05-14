@@ -9,6 +9,7 @@ public class TurretPlacer : MonoBehaviour {
     public int xSize;
     public int zSize;
     public LayerMask hitlayers;
+    public int price;
 
 	// Use this for initialization
 	void Start () {
@@ -54,6 +55,7 @@ public class TurretPlacer : MonoBehaviour {
         var hitColliders = Physics.OverlapBox(gameObject.transform.position, new Vector3((xSize * grid.size)/20, grid.size * 100000, (zSize * grid.size)/20), Quaternion.identity, hitlayers);
         if(hitColliders.Length <= 1)
         {
+            GameObject.FindGameObjectWithTag("GameController").GetComponent<Currency>().money -= price;
             GameObject newObject = Instantiate(turret, finalPosition, Quaternion.identity) as GameObject;
             newObject.transform.localScale = new Vector3(xSize * grid.size, 50 * grid.size, zSize * grid.size);
             ShopMenu.instance.shopMenu.SetActive(true);

@@ -8,16 +8,13 @@ public class BulletNumbers : MonoBehaviour {
 
     public int pistolBulletsInGun;
     public int pistolBulletsInStock;
+    public int pistolMaxInStock;
     public int pistolMaxInGun;
     public int pistolDamage;
 
-    public int assaultBulletsInGun;
-    public int assaultBulletsInStock;
-    public int assaultMaxInGun;
-    public int assaultDamage;
-
     public int shotgunBulletsInGun;
     public int shotgunBulletsInStock;
+    public int shotgunMaxInStock;
     public int shotgunMaxInGun;
     public int shotgunDamage;
     public int shotgunBullets;
@@ -25,11 +22,19 @@ public class BulletNumbers : MonoBehaviour {
 
     public int sniperBulletsInGun;
     public int sniperBulletsInStock;
+    public int sniperMaxInStock;
     public int sniperMaxInGun;
     public int sniperDamage;
 
     private void Awake()
     {
-        instance = this;
+        if(instance == null)
+        {
+            instance = this;
+        }
+        if(instance != this)
+        {
+            Destroy(this);
+        }
     }
 }

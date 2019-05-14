@@ -10,6 +10,7 @@ public class TrapPlacer : MonoBehaviour {
     public int zSize;
     public float yAxis;
     public LayerMask hitlayers;
+    public int price;
 
     // Use this for initialization
     void Start () {
@@ -32,6 +33,7 @@ public class TrapPlacer : MonoBehaviour {
                 if(hitInfo.transform.gameObject.tag == "TrapMap" && hitInfo.transform.tag != "Trap")
                 {
                     Debug.Log("Place");
+                    GameObject.FindGameObjectWithTag("GameController").GetComponent<Currency>().money -= price;
                     GameObject newObject = Instantiate(trap, hitInfo.point, Quaternion.identity) as GameObject;
                     newObject.transform.localScale = new Vector3(xSize, ySize, zSize);
                     newObject.transform.rotation = hitInfo.transform.rotation;

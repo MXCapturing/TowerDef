@@ -11,6 +11,12 @@ public class HitboxDamage : MonoBehaviour {
             other.GetComponent<Fence>().Damage(this.transform.root.GetComponent<EnemyAttack>().damage);
             Invoke("HitboxOff", 0.5f);
         }
+
+        if(other.transform.name == "Player")
+        {
+            other.GetComponent<PlayerHP>().Damage(this.transform.root.GetComponent<EnemyAttack>().damage);
+            Invoke("HitboxOff", 0.5f);
+        }
     }
 
     void HitboxOff()
