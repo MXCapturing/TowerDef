@@ -8,10 +8,12 @@ public class SuppliesRestore : MonoBehaviour {
     public int ammoPrice;
     public int hpPrice;
     public int doorPrice;
+    public int armourPrice;
 
     public Button ammoButton;
     public Button hpButton;
     public Button doorButton;
+    public Button armourButton;
 
     private BulletNumbers bulletNo;
     public GameObject player;
@@ -25,7 +27,7 @@ public class SuppliesRestore : MonoBehaviour {
         hpPrice = 5 * (player.GetComponent<PlayerHP>().maxHP - player.GetComponent<PlayerHP>().health);
         ammoPrice = (1 * (bulletNo.pistolMaxInStock - bulletNo.pistolBulletsInStock) + (3 * (bulletNo.shotgunMaxInStock - bulletNo.shotgunBulletsInStock)) + (5 * (bulletNo.sniperMaxInStock - bulletNo.sniperBulletsInStock)));
 
-        if(ammoPrice >= Currency.instance.money || ammoPrice == 0)
+        if(ammoPrice > Currency.instance.money || ammoPrice == 0)
         {
             ammoButton.interactable = false;
         }
@@ -34,7 +36,7 @@ public class SuppliesRestore : MonoBehaviour {
             ammoButton.interactable = true;
         }
 
-        if (hpPrice >= Currency.instance.money || hpPrice == 0)
+        if (hpPrice > Currency.instance.money || hpPrice == 0)
         {
             hpButton.interactable = false;
         }
@@ -43,13 +45,22 @@ public class SuppliesRestore : MonoBehaviour {
             hpButton.interactable = true;
         }
 
-        if (doorPrice >= Currency.instance.money || doorPrice == 0)
+        if (doorPrice > Currency.instance.money || doorPrice == 0)
         {
             doorButton.interactable = false;
         }
         else
         {
             doorButton.interactable = true;
+        }
+
+        if (armourPrice > Currency.instance.money || player.GetComponent<PlayerHP>().armour == player.GetComponent<PlayerHP>().maxArmour)
+        {
+            armourButton.interactable = false;
+        }
+        else
+        {
+            armourButton.interactable = true;
         }
     }
 
@@ -70,5 +81,11 @@ public class SuppliesRestore : MonoBehaviour {
     public void FixDoors()
     {
 
+    }
+
+    public void Armour()
+    {
+        Currency.instance.money -= armourPrice;
+        player.GetComponent<PlayerHP>().armour = player.GetComponent<PlayerHP>().maxArmour;
     }
 }

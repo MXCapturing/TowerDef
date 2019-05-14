@@ -40,6 +40,12 @@ public class ShopMenu : MonoBehaviour {
         subMenus[2].SetActive(true);
     }
 
+    public void Guns()
+    {
+        typeMenu.SetActive(false);
+        subMenus[3].SetActive(true);
+    }
+
     public void Back()
     {
         for (int i = 0; i < subMenus.Length; i++)
