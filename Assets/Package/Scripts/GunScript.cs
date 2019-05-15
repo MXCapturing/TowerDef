@@ -171,20 +171,23 @@ public class GunScript : MonoBehaviour {
 			secondCamera.fieldOfView = Mathf.SmoothDamp(secondCamera.fieldOfView, secondCameraZoomRatio_notAiming, ref secondCameraZoomVelocity, gunAimTime);
 		}
 
-        if(currentStyle == GunStyles.pistol || currentStyle == GunStyles.assault)
+        if(EnemyWaves.instance.state != EnemyWaves.SpawnState.Shopping)
         {
-            BulletNumbers.instance.pistolBulletsInGun = bulletsInTheGun;
-            BulletNumbers.instance.pistolBulletsInStock = bulletsIHave;
-        }
-        if(currentStyle == GunStyles.shotgun)
-        {
-            BulletNumbers.instance.shotgunBulletsInGun = bulletsInTheGun;
-            BulletNumbers.instance.shotgunBulletsInStock = bulletsIHave;
-        }
-        if(currentStyle == GunStyles.sniper)
-        {
-            BulletNumbers.instance.sniperBulletsInGun = bulletsInTheGun;
-            BulletNumbers.instance.sniperBulletsInStock = bulletsIHave;
+            if (currentStyle == GunStyles.pistol || currentStyle == GunStyles.assault)
+            {
+                BulletNumbers.instance.pistolBulletsInGun = bulletsInTheGun;
+                BulletNumbers.instance.pistolBulletsInStock = bulletsIHave;
+            }
+            if (currentStyle == GunStyles.shotgun)
+            {
+                BulletNumbers.instance.shotgunBulletsInGun = bulletsInTheGun;
+                BulletNumbers.instance.shotgunBulletsInStock = bulletsIHave;
+            }
+            if (currentStyle == GunStyles.sniper)
+            {
+                BulletNumbers.instance.sniperBulletsInGun = bulletsInTheGun;
+                BulletNumbers.instance.sniperBulletsInStock = bulletsIHave;
+            }
         }
 
 	}

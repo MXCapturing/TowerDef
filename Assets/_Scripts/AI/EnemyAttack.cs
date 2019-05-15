@@ -14,6 +14,8 @@ public class EnemyAttack : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        damage = EnemyWaves.instance.enemyDamage;
+        attackDelay = EnemyWaves.instance.enemyDelay;
         InvokeRepeating("Attack", 1f, attackDelay);
 	}
 	

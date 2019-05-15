@@ -9,6 +9,11 @@ public class EnemyHP : MonoBehaviour {
     public int hp;
     public int money;
 
+    private void Start()
+    {
+        hp = EnemyWaves.instance.enemyHP;
+    }
+
     public void Damage(int damage)
     {
         if(GamePhases.instance.gamePhases == Phases.FPS)

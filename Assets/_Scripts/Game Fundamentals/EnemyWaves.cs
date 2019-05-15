@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyWaves : MonoBehaviour {
 
+    public static EnemyWaves instance;
+
     public enum SpawnState { Spawning, Waiting, Counting, Shopping };
 
     [System.Serializable]
@@ -16,7 +18,18 @@ public class EnemyWaves : MonoBehaviour {
     }
 
     public Waves[] waves;
-    private int nextWave = 0;
+    public int nextWave = 0;
+
+    public int enemyHP;
+    public int enemyDamage;
+    public float enemyDelay;
+    public float enemySpeed;
+
+    public int waveReward;
+
+    public int randomSpawn;
+    public int randomSpawnMax = 1;
+    public Transform[] spawnpoints;
 
     public float waveCountdown;
 
@@ -28,6 +41,7 @@ public class EnemyWaves : MonoBehaviour {
 
     private void Start()
     {
+        instance = this;
         waveCountdown = 5f;
     }
 
@@ -49,9 +63,13 @@ public class EnemyWaves : MonoBehaviour {
 
             if (waveCountdown <= 0)
             {
-                if (state != SpawnState.Spawning)
+                if (state != SpawnState.Spawning && nextWave <= 4)
                 {
-                    StartCoroutine(SpawnWave(waves[nextWave]));
+                    StartCoroutine(SpawnTutorialWave(waves[nextWave]));
+                }
+                else if(state != SpawnState.Spawning && nextWave > 4)
+                {
+                    StartCoroutine(SpawnWaves(waves[5]));
                 }
             }
             else
@@ -68,10 +86,32 @@ public class EnemyWaves : MonoBehaviour {
         state = SpawnState.Shopping;
         waveCountdown = 5f;
 
+        BulletNumbers.instance.pistolBulletsInGun = BulletNumbers.instance.pistolMaxInGun;
+        BulletNumbers.instance.shotgunBulletsInGun = BulletNumbers.instance.shotgunMaxInGun;
+        BulletNumbers.instance.sniperBulletsInGun = BulletNumbers.instance.sniperMaxInGun;
+
+        Currency.instance.money += waveReward;
+        waveReward += 50;
+
         playerAnim.SetBool("FadeOut", true);
         Invoke("FadeOutFalse", 1f);
 
         nextWave++;
+        if(nextWave % 5 == 0)
+        {
+            if(randomSpawnMax < 6)
+            {
+                randomSpawnMax++;
+            }
+            enemyHP += 10;
+            enemyDamage += 5;
+            enemyDelay -= 0.2f;
+            enemySpeed += 0.2f;
+        }
+        if(nextWave > 5)
+        {
+            waves[5].count += 2;
+        }
     }
 
     void FadeOutFalse()
@@ -94,7 +134,7 @@ public class EnemyWaves : MonoBehaviour {
         return true;
     }
 
-    IEnumerator SpawnWave(Waves _wave)
+    IEnumerator SpawnTutorialWave(Waves _wave)
     {
         Debug.Log("Spawning Wave: " + _wave.waveName);
         state = SpawnState.Spawning;
@@ -110,9 +150,26 @@ public class EnemyWaves : MonoBehaviour {
         yield break;
     }
 
+    IEnumerator SpawnWaves(Waves _wave_)
+    {
+        Debug.Log("Spawning Wave: " + nextWave);
+        state = SpawnState.Spawning;
+
+        for (int i = 0; i < _wave_.count; i++)
+        {
+            SpawnEnemy(_wave_.enemy);
+            yield return new WaitForSeconds(1f / _wave_.rate);
+        }
+
+        state = SpawnState.Waiting;
+
+        yield break;
+    }
+
     void SpawnEnemy(Transform _enemy)
     {
         Debug.Log("Spawning Enemy: " + _enemy.name);
-        Instantiate(_enemy, transform.position, transform.rotation);
+        randomSpawn = Random.Range(0, randomSpawnMax);
+        Instantiate(_enemy, spawnpoints[randomSpawn].position, transform.rotation);
     }
 }

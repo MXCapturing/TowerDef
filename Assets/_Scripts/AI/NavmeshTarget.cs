@@ -24,6 +24,7 @@ public class NavmeshTarget : MonoBehaviour {
 	void Start () {
         agent = GetComponent<NavMeshAgent>();
         phases = GameObject.Find("GameManager").GetComponent<GamePhases>();
+        maxSpeed = EnemyWaves.instance.enemySpeed;
 	}
 	
 	// Update is called once per frame
