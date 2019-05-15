@@ -60,7 +60,7 @@ public class TrapPlacer : MonoBehaviour {
         transform.localScale = new Vector3(xSize , ySize , zSize );
         if (Physics.Raycast(ray, out hitInfo))
         {         
-            if (hitInfo.transform.gameObject.tag == "TrapMap")
+            if (hitInfo.transform.gameObject.tag == "TrapMap" && hitInfo.transform.tag != "Trap")
             {
                 GetComponent<Renderer>().material.color = new Color(0, 1, 0, 0.39f);
                 Debug.Log(hitInfo.transform.gameObject.name);
