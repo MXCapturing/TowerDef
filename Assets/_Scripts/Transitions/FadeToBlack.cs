@@ -8,6 +8,7 @@ public class FadeToBlack : MonoBehaviour {
     public Camera shopCam;
     public GameObject playerCam;
     public Animator plCamFadeIn;
+    public Animator shopFade;
     public bool inOrOut = false;
 
     public void FadeMe()
@@ -29,7 +30,7 @@ public class FadeToBlack : MonoBehaviour {
         CanvasGroup canvasGroup = GameObject.Find("Phase Transition").GetComponent<CanvasGroup>();
         while(canvasGroup.alpha < 1)
         {
-            canvasGroup.alpha += Time.deltaTime / 2;
+            canvasGroup.alpha += Time.deltaTime;
             yield return null;
         }
     }
@@ -39,27 +40,51 @@ public class FadeToBlack : MonoBehaviour {
         CanvasGroup canvasGroup = GameObject.Find("Phase Transition").GetComponent<CanvasGroup>();
         while (canvasGroup.alpha > 0)
         {
-            canvasGroup.alpha -= Time.deltaTime / 2;
+            canvasGroup.alpha -= Time.deltaTime;
             yield return null;
         }
-    }
-
-    public void EnableShop()
-    {
-        shopCam.enabled = true;
-        playerCam.SetActive(false);
     }
 
     public void EnablePlayer()
     {
         shopCam.enabled = false;
         playerCam.SetActive(true);
+        Cursor.lockState = CursorLockMode.Locked;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<GunInventory>().StartGun();
         plCamFadeIn.SetBool("FadeIn", true);
-        Invoke("SetBool", 1);
+        Invoke("SetFPSBool", 1);
     }
 
-    void SetBool()
+    void SetFPSBool()
     {
         plCamFadeIn.SetBool("FadeIn", false);
+    }
+
+    void SetShopBool()
+    {
+        shopFade.SetBool("ToShop", false);
+    }
+
+    public void ShopFade()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        Destroy(GameObject.FindGameObjectWithTag("Player").GetComponent<GunInventory>().currentGun);
+        Debug.Log("ShopFade");
+        shopCam.enabled = true;
+        playerCam.SetActive(false);
+        shopFade.SetBool("ToShop", true);
+        Invoke("SetShopBool", 1f);
+    }
+
+    public void EnableShop()
+    {
+        GamePhases.instance.gamePhases = Phases.Build;
+        GamePhases.instance.PhasesGame();
+    }
+
+    public void Check()
+    {
+        Debug.Log("Check");
     }
 }

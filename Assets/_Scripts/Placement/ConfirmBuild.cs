@@ -17,6 +17,7 @@ public class ConfirmBuild : MonoBehaviour {
         fadeIn.SetBool("FadeOut", true);
         Invoke("SetBool", 1);
         phases.gamePhases = Phases.FPS;
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<EnemyWaves>().state = EnemyWaves.SpawnState.Counting;
         phases.PhasesGame();
     }
 

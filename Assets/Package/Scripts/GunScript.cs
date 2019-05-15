@@ -127,7 +127,7 @@ public class GunScript : MonoBehaviour {
 		PositionGun();
 
 		Shooting();
-		MeeleAttack();
+		//MeeleAttack();
 		LockCameraWhileMelee ();
 
 		Sprint(); //iff we have the gun you sprint from here, if we are gunless then its called from movement script
@@ -145,7 +145,7 @@ public class GunScript : MonoBehaviour {
 	void FixedUpdate(){
 		RotationGun ();
 
-		MeeleAnimationsStates ();
+		//MeeleAnimationsStates ();
 
 		/*
 		 * Changing some values if we are aiming, like sensitity, zoom racion and position of the waepon.
@@ -170,6 +170,22 @@ public class GunScript : MonoBehaviour {
 			cameraComponent.fieldOfView = Mathf.SmoothDamp(cameraComponent.fieldOfView, cameraZoomRatio_notAiming, ref cameraZoomVelocity, gunAimTime);
 			secondCamera.fieldOfView = Mathf.SmoothDamp(secondCamera.fieldOfView, secondCameraZoomRatio_notAiming, ref secondCameraZoomVelocity, gunAimTime);
 		}
+
+        if(currentStyle == GunStyles.pistol || currentStyle == GunStyles.assault)
+        {
+            BulletNumbers.instance.pistolBulletsInGun = bulletsInTheGun;
+            BulletNumbers.instance.pistolBulletsInStock = bulletsIHave;
+        }
+        if(currentStyle == GunStyles.shotgun)
+        {
+            BulletNumbers.instance.shotgunBulletsInGun = bulletsInTheGun;
+            BulletNumbers.instance.shotgunBulletsInStock = bulletsIHave;
+        }
+        if(currentStyle == GunStyles.sniper)
+        {
+            BulletNumbers.instance.sniperBulletsInGun = bulletsInTheGun;
+            BulletNumbers.instance.sniperBulletsInStock = bulletsIHave;
+        }
 
 	}
 
@@ -246,7 +262,7 @@ public class GunScript : MonoBehaviour {
 	 */
 	void MeeleAnimationsStates(){
 		if (handsAnimator) {
-			meeleAttack = handsAnimator.GetCurrentAnimatorStateInfo (0).IsName (meeleAnimationName);
+			//meeleAttack = handsAnimator.GetCurrentAnimatorStateInfo (0).IsName (meeleAnimationName);
 			aiming = handsAnimator.GetCurrentAnimatorStateInfo (0).IsName (aimingAnimationName);	
 		}
 	}
@@ -637,5 +653,5 @@ public class GunScript : MonoBehaviour {
 	[Header("Animation names")]
 	public string reloadAnimationName = "Player_Reload";
 	public string aimingAnimationName = "Player_AImpose";
-	public string meeleAnimationName = "Character_Malee";
+	//public string meeleAnimationName = "Character_Malee";
 }
