@@ -24,25 +24,41 @@ public class ShopMenu : MonoBehaviour {
 
     public void Turrets()
     {
-        typeMenu.SetActive(false);
+        //typeMenu.SetActive(false);
+        for (int i = 0; i < subMenus.Length; i++)
+        {
+            subMenus[i].SetActive(false);
+        }
         subMenus[0].SetActive(true);
     }
 
     public void Traps()
     {
-        typeMenu.SetActive(false);
+        //typeMenu.SetActive(false);
+        for (int i = 0; i < subMenus.Length; i++)
+        {
+            subMenus[i].SetActive(false);
+        }
         subMenus[1].SetActive(true);
     }
 
     public void Supplies()
     {
-        typeMenu.SetActive(false);
+        //typeMenu.SetActive(false);
+        for (int i = 0; i < subMenus.Length; i++)
+        {
+            subMenus[i].SetActive(false);
+        }
         subMenus[2].SetActive(true);
     }
 
     public void Guns()
     {
-        typeMenu.SetActive(false);
+        //typeMenu.SetActive(false);
+        for (int i = 0; i < subMenus.Length; i++)
+        {
+            subMenus[i].SetActive(false);
+        }
         subMenus[3].SetActive(true);
     }
 
@@ -51,12 +67,16 @@ public class ShopMenu : MonoBehaviour {
         for (int i = 0; i < subMenus.Length; i++)
         {
             subMenus[i].SetActive(false);
-            typeMenu.SetActive(true);
+            //typeMenu.SetActive(true);
         }
     }
 
     public void ViewMap()
     {
+        for (int i = 0; i < subMenus.Length; i++)
+        {
+            subMenus[i].SetActive(false);
+        }
         mapView = true;
         shopMenu.SetActive(false);
         mapBack.SetActive(true);

@@ -14,6 +14,8 @@ public class PlayerMovementScript : MonoBehaviour {
 	[Tooltip("Position of the camera inside the player")]
 	[HideInInspector]public Vector3 cameraPosition;
 
+    public bool dead;
+
 	/*
 	 * Getting the Players rigidbody component.
 	 * And grabbing the mainCamera from Players child transform.
@@ -98,6 +100,11 @@ public class PlayerMovementScript : MonoBehaviour {
 		Crouching();
 
 		WalkingSound ();
+
+        if(dead == true)
+        {
+            currentSpeed = 0;
+        }
 
 
 	}//end update

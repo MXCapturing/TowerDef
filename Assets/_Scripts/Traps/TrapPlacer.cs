@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 public class TrapPlacer : MonoBehaviour {
 
@@ -42,6 +43,10 @@ public class TrapPlacer : MonoBehaviour {
                     References.instance.trapMap.SetActive(false);
                     References.instance.trapCam.SetActive(false);
                     References.instance.camView.SetActive(false);
+                    Analytics.CustomEvent("Placed Trap", new Dictionary<string, object>
+                    {
+                        {trap.name, 1 }
+                    });
                     Destroy(this.gameObject);
                     //PlaceCubeNear(hitInfo.point);
                 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 public class TurretPlacer : MonoBehaviour {
 
@@ -58,6 +59,10 @@ public class TurretPlacer : MonoBehaviour {
             GameObject.FindGameObjectWithTag("GameController").GetComponent<Currency>().money -= price;
             GameObject newObject = Instantiate(turret, finalPosition, Quaternion.identity) as GameObject;
             newObject.transform.localScale = new Vector3(xSize * grid.size, 50 * grid.size, zSize * grid.size);
+            Analytics.CustomEvent("Placed Turret", new Dictionary<string, object>
+            {
+                {turret.name, 1 }
+            });
             ShopMenu.instance.shopMenu.SetActive(true);
             Destroy(this.gameObject);
         }

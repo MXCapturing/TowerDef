@@ -16,7 +16,7 @@ public class FlameCone : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Enemy")
+        if(other.tag == "Enemy" && other.GetComponent<Collider>().enabled == true)
         {
             other.GetComponent<EnemyHP>().Damage(this.transform.root.GetComponent<TurretInfo>().damage);
         }

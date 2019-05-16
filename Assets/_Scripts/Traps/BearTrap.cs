@@ -22,7 +22,7 @@ public class BearTrap : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Enemy" && trappedEnemy == 0)
+        if(other.tag == "Enemy" && trappedEnemy == 0 && other.GetComponent<NavmeshTarget>().trapped == false)
         {
             enemy = other.gameObject;
             trappedEnemy = 1;

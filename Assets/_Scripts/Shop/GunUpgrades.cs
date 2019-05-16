@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Analytics;
 
 public class GunUpgrades : MonoBehaviour {
 
@@ -18,7 +19,7 @@ public class GunUpgrades : MonoBehaviour {
 
     public GameObject player;
 
-    private void FixedUpdate()
+    private void Update()
     {
         if(pistolPrice > Currency.instance.money || pistolLevel == 5)
         {
@@ -53,12 +54,12 @@ public class GunUpgrades : MonoBehaviour {
         if(pistolLevel < 4)
         {
             Currency.instance.money -= pistolPrice;
+            pistolPrice += 200;
             pistolLevel++;
             BulletNumbers.instance.pistolMaxInGun += 2;
             BulletNumbers.instance.pistolMaxInStock += 6;
             BulletNumbers.instance.pistolDamage += 2;
             BulletNumbers.instance.pistolBulletsInGun = BulletNumbers.instance.pistolMaxInGun;
-            pistolPrice += 200;
             if (GameObject.Find("Script Holder").GetComponent<SuppliesRestore>().ammoPrice == 0)
             {
                 BulletNumbers.instance.pistolBulletsInStock = BulletNumbers.instance.pistolMaxInStock;
@@ -71,6 +72,10 @@ public class GunUpgrades : MonoBehaviour {
             player.GetComponent<GunInventory>().gunsIHave.Remove("NewGun_Pistol");
             player.GetComponent<GunInventory>().gunsIHave.Insert(0, "NewGun_Assault");
         }
+        Analytics.CustomEvent("Pistol Upgraded", new Dictionary<string, object>
+        {
+            {"Pistol Level", pistolLevel }
+        });
     }
 
     public void ShotgunUp()
@@ -78,13 +83,13 @@ public class GunUpgrades : MonoBehaviour {
         if (player.GetComponent<GunInventory>().gunsIHave.Contains("NewGun_Shotgun") && shotgunLevel < 5)
         {
             Currency.instance.money -= shotgunPrice;
+            shotgunPrice += 300;
             shotgunLevel++;
             BulletNumbers.instance.shotgunMaxInStock += 6;
             BulletNumbers.instance.shotgunMaxInGun += 3;
             BulletNumbers.instance.shotgunDamage += 3;
             BulletNumbers.instance.shotgunBullets += 2;
             BulletNumbers.instance.shotgunBulletsInGun = BulletNumbers.instance.shotgunMaxInGun;
-            shotgunPrice += 300;
             if (GameObject.Find("Script Holder").GetComponent<SuppliesRestore>().ammoPrice == 0)
             {
                 BulletNumbers.instance.shotgunBulletsInStock = BulletNumbers.instance.shotgunMaxInStock;
@@ -96,6 +101,10 @@ public class GunUpgrades : MonoBehaviour {
             shotgunLevel = 1;
             shotgunPrice += 300;
         }
+        Analytics.CustomEvent("Shotgun Upgraded", new Dictionary<string, object>
+        {
+            {"Shotgun Level", shotgunLevel }
+        });
     }
 
     public void SniperUp()
@@ -103,12 +112,12 @@ public class GunUpgrades : MonoBehaviour {
         if (player.GetComponent<GunInventory>().gunsIHave.Contains("NewGun_Sniper") && sniperLevel < 5)
         {
             Currency.instance.money -= sniperPrice;
+            sniperPrice += 500;
             sniperLevel++;
             BulletNumbers.instance.sniperMaxInStock += 3;
             BulletNumbers.instance.sniperMaxInGun += 1;
             BulletNumbers.instance.sniperDamage += 10;
             BulletNumbers.instance.sniperBulletsInGun = BulletNumbers.instance.sniperMaxInGun;
-            sniperPrice += 500;
             if (GameObject.Find("Script Holder").GetComponent<SuppliesRestore>().ammoPrice == 0)
             {
                 BulletNumbers.instance.sniperBulletsInStock = BulletNumbers.instance.sniperMaxInStock;
@@ -120,5 +129,9 @@ public class GunUpgrades : MonoBehaviour {
             sniperLevel = 1;
             sniperPrice += 500;
         }
+        Analytics.CustomEvent("Sniper Upgraded", new Dictionary<string, object>
+        {
+            {"Sniper Level", sniperLevel }
+        });
     }
 }
