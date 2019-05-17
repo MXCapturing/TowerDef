@@ -14,6 +14,10 @@ public class ConfirmBuild : MonoBehaviour {
 
     public void Confirm()
     {
+        for (int i = 0; i < ShopMenu.instance.subMenus.Length; i++)
+        {
+            ShopMenu.instance.subMenus[i].SetActive(false);
+        }
         fadeIn.SetBool("FadeOut", true);
         Invoke("SetBool", 1);
         phases.gamePhases = Phases.FPS;

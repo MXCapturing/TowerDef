@@ -2868,7 +2868,6 @@ MonoBehaviour:
   handsAnimator: {fileID: 9596676}
   reloadAnimationName: Player_Reload
   aimingAnimationName: Player_AImpose
-  meeleAnimationName: Character_Malee
 --- !u!137 &13703288
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

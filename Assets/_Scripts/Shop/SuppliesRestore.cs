@@ -25,7 +25,7 @@ public class SuppliesRestore : MonoBehaviour {
     private void FixedUpdate()
     {
         hpPrice = 5 * (player.GetComponent<PlayerHP>().maxHP - player.GetComponent<PlayerHP>().health);
-        ammoPrice = (1 * (bulletNo.pistolMaxInStock - bulletNo.pistolBulletsInStock) + (3 * (bulletNo.shotgunMaxInStock - bulletNo.shotgunBulletsInStock)) + (5 * (bulletNo.sniperMaxInStock - bulletNo.sniperBulletsInStock)));
+        ammoPrice = (2 * (bulletNo.pistolMaxInStock - bulletNo.pistolBulletsInStock) + (5 * (bulletNo.shotgunMaxInStock - bulletNo.shotgunBulletsInStock)) + (10 * (bulletNo.sniperMaxInStock - bulletNo.sniperBulletsInStock)));
 
         if(ammoPrice > Currency.instance.money || ammoPrice == 0)
         {
@@ -80,7 +80,11 @@ public class SuppliesRestore : MonoBehaviour {
 
     public void FixDoors()
     {
-
+        Currency.instance.money -= doorPrice;
+        for (int i = 0; i < gameObject.GetComponent<DoorUpgrade>().doors.Count; i++)
+        {
+            gameObject.GetComponent<DoorUpgrade>().doors[i].GetComponent<DoorHealth>().health = gameObject.GetComponent<DoorUpgrade>().doors[i].GetComponent<DoorHealth>().maxHP;
+        }
     }
 
     public void Armour()
