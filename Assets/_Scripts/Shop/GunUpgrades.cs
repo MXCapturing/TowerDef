@@ -125,6 +125,7 @@ public class GunUpgrades : MonoBehaviour {
         }
         else
         {
+            Currency.instance.money -= sniperPrice;
             player.GetComponent<GunInventory>().gunsIHave.Add("NewGun_Sniper");
             sniperLevel = 1;
             sniperPrice += 500;

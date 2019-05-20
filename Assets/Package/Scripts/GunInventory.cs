@@ -167,7 +167,7 @@ public class GunInventory : MonoBehaviour {
                     BulletNumbers.instance.sniperMaxInGun = currentGun.GetComponent<GunScript>().amountOfBulletsPerLoad;
                 }
 
-                currentHAndsAnimator.SetBool("changingWeapon", true);
+                //currentHAndsAnimator.SetBool("changingWeapon", true);
 
 				yield return new WaitForSeconds(0.8f);//0.8 time to change waepon, but since there is no change weapon animation there is no need to wait fo weapon taken down
 				Destroy(currentGun);
@@ -177,10 +177,10 @@ public class GunInventory : MonoBehaviour {
 				AssignHandsAnimator(currentGun);
 			}
 			else if(currentGun.name.Contains("Sword")){
-				currentHAndsAnimator.SetBool("changingWeapon", true);
+				//currentHAndsAnimator.SetBool("changingWeapon", true);
 				yield return new WaitForSeconds(0.25f);//0.5f
 
-				currentHAndsAnimator.SetBool("changingWeapon", false);
+				//currentHAndsAnimator.SetBool("changingWeapon", false);
 
 				yield return new WaitForSeconds(0.6f);//1
 				Destroy(currentGun);
@@ -206,7 +206,7 @@ public class GunInventory : MonoBehaviour {
 	*/
 	void AssignHandsAnimator(GameObject _currentGun){
 		if(_currentGun.name.Contains("Gun")){
-			currentHAndsAnimator = currentGun.GetComponent<GunScript>().handsAnimator;
+			//currentHAndsAnimator = currentGun.GetComponent<GunScript>().handsAnimator;
 		}
 	}
 

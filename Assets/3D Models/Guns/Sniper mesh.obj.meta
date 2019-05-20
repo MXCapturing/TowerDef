@@ -1,59 +1,58 @@
 fileFormatVersion: 2
-guid: 684813af081fe4a4cacb2c607c525e64
+guid: df30a70de5908554982adaef51aef39f
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: barrel
-    100002: bolt
-    100004: scope
-    100006: sideSightaim
+    100000: barrel_barrel
+    100002: bolt_bolt
+    100004: scope_scope
+    100006: sideSightaim_sideSightaim
     100008: //RootNode
-    100010: stock
-    100012: topSightaim
-    100014: trigger2
-    100016: triggerGuard
-    400000: barrel
-    400002: bolt
-    400004: scope
-    400006: sideSightaim
+    100010: stock_stock
+    100012: topSightaim_topSightaim
+    100014: trigger2_trigger2
+    100016: triggerGuard_triggerGuard
+    400000: barrel_barrel
+    400002: bolt_bolt
+    400004: scope_scope
+    400006: sideSightaim_sideSightaim
     400008: //RootNode
-    400010: stock
-    400012: topSightaim
-    400014: trigger2
-    400016: triggerGuard
-    2100000: lambert1
-    2300000: barrel
-    2300002: bolt
-    2300004: scope
-    2300006: sideSightaim
-    2300008: stock
-    2300010: topSightaim
-    2300012: trigger2
-    2300014: triggerGuard
-    3300000: barrel
-    3300002: bolt
-    3300004: scope
-    3300006: sideSightaim
-    3300008: stock
-    3300010: topSightaim
-    3300012: trigger2
-    3300014: triggerGuard
-    4300000: stock
-    4300002: trigger2
-    4300004: barrel
-    4300006: bolt
-    4300008: scope
-    4300010: topSightaim
-    4300012: triggerGuard
-    4300014: sideSightaim
-    6400000: barrel
-    6400002: bolt
-    6400004: scope
-    6400006: sideSightaim
-    6400008: stock
-    6400010: topSightaim
-    6400012: trigger2
-    6400014: triggerGuard
+    400010: stock_stock
+    400012: topSightaim_topSightaim
+    400014: trigger2_trigger2
+    400016: triggerGuard_triggerGuard
+    2100000: barrel_barrelMat
+    2100002: bolt_boltMat
+    2100004: scope_scopeMat
+    2100006: sideSightaim_sideSightaimMat
+    2100008: stock_stockMat
+    2100010: topSightaim_topSightaimMat
+    2100012: trigger2_trigger2Mat
+    2100014: triggerGuard_triggerGuardMat
+    2300000: barrel_barrel
+    2300002: bolt_bolt
+    2300004: scope_scope
+    2300006: sideSightaim_sideSightaim
+    2300008: stock_stock
+    2300010: topSightaim_topSightaim
+    2300012: trigger2_trigger2
+    2300014: triggerGuard_triggerGuard
+    3300000: barrel_barrel
+    3300002: bolt_bolt
+    3300004: scope_scope
+    3300006: sideSightaim_sideSightaim
+    3300008: stock_stock
+    3300010: topSightaim_topSightaim
+    3300012: trigger2_trigger2
+    3300014: triggerGuard_triggerGuard
+    4300000: barrel_barrel
+    4300002: bolt_bolt
+    4300004: scope_scope
+    4300006: sideSightaim_sideSightaim
+    4300008: stock_stock
+    4300010: topSightaim_topSightaim
+    4300012: trigger2_trigger2
+    4300014: triggerGuard_triggerGuard
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -87,7 +86,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 1
+    addColliders: 0
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1

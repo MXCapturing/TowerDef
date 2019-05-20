@@ -33,6 +33,8 @@ public class GunScript : MonoBehaviour {
 	private PlayerMovementScript pmS;
     private BulletNumbers bulletSets;
 
+    public GameObject sniperScope;
+
     public int damage;
 
 	/*
@@ -187,6 +189,14 @@ public class GunScript : MonoBehaviour {
             {
                 BulletNumbers.instance.sniperBulletsInGun = bulletsInTheGun;
                 BulletNumbers.instance.sniperBulletsInStock = bulletsIHave;
+                if(Input.GetAxis("Fire2") == 1)
+                {
+                    sniperScope.SetActive(true);
+                }
+                else
+                {
+                    sniperScope.SetActive(false);
+                }
             }
         }
 
@@ -272,12 +282,12 @@ public class GunScript : MonoBehaviour {
 	/*
 	* User inputs meele attack with Q in keyboard start the coroutine for animation and damage attack.
 	*/
-	void MeeleAttack(){	
+	/*void MeeleAttack(){	
 
 		if(Input.GetKeyDown(KeyCode.Q) && !meeleAttack){			
 			StartCoroutine("AnimationMeeleAttack");
 		}
-	}
+	}*/
 	/*
 	* Sets meele animation to play.
 	*/
@@ -532,9 +542,9 @@ public class GunScript : MonoBehaviour {
 			}
 		
 
-			handsAnimator.SetBool("reloading",true);
+			//handsAnimator.SetBool("reloading",true);
 			yield return new WaitForSeconds(0.5f);
-			handsAnimator.SetBool("reloading",false);
+			//handsAnimator.SetBool("reloading",false);
 
 
 
@@ -639,18 +649,9 @@ public class GunScript : MonoBehaviour {
 	*/
 	void Animations(){
 
-		if(handsAnimator){
-
-			reloading = handsAnimator.GetCurrentAnimatorStateInfo(0).IsName(reloadAnimationName);
-
-			handsAnimator.SetFloat("walkSpeed",pmS.currentSpeed);
-			handsAnimator.SetBool("aiming", Input.GetButton("Fire2"));
-			handsAnimator.SetInteger("maxSpeed", pmS.maxSpeed);
-			if(Input.GetKeyDown(KeyCode.R) && pmS.maxSpeed < 5 && !reloading && !meeleAttack/* && !aiming*/){
-				StartCoroutine("Reload_Animation");
-			}
+	    if(Input.GetKeyDown(KeyCode.R) && pmS.maxSpeed < 5 && !reloading && !meeleAttack/* && !aiming*/){
+			StartCoroutine("Reload_Animation");
 		}
-
 	}
 
 	[Header("Animation names")]
