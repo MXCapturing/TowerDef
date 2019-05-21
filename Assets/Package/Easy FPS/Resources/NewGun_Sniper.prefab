@@ -804,6 +804,7 @@ MonoBehaviour:
   bulletsInTheGun: 0
   amountOfBulletsPerLoad: 0
   sniperScope: {fileID: 143682}
+  reload: {fileID: 95371141987306750}
   damage: 0
   currentGunPosition: {x: 0, y: 0, z: 0}
   restPlacePosition: {x: -0.07, y: -0.06, z: 0.4}
@@ -1049,6 +1050,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4156553635024922}
+  - component: {fileID: 95371141987306750}
   m_Layer: 8
   m_Name: Sniper
   m_TagString: Untagged
@@ -1619,3 +1621,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1672127014804300}
   m_Mesh: {fileID: 4300012, guid: df30a70de5908554982adaef51aef39f, type: 3}
+--- !u!95 &95371141987306750
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1281978433115630}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0dec36324be9da0458bd9cf05f75131e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

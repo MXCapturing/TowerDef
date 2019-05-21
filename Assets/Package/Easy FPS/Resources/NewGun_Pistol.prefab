@@ -629,6 +629,7 @@ MonoBehaviour:
   bulletsInTheGun: 0
   amountOfBulletsPerLoad: 0
   sniperScope: {fileID: 0}
+  reload: {fileID: 95004427992840774}
   damage: 5
   currentGunPosition: {x: 0, y: 0, z: 0}
   restPlacePosition: {x: -0.07, y: -0.06, z: 0.42}
@@ -942,6 +943,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4652235882697628}
+  - component: {fileID: 95004427992840774}
   m_Layer: 8
   m_Name: Pistol
   m_TagString: Untagged
@@ -1298,3 +1300,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1109253148741866}
   m_Mesh: {fileID: 4300000, guid: 5c8985c4fa8117d4b9f5c52e545746e7, type: 3}
+--- !u!95 &95004427992840774
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1859933841280696}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 88145f8f7b1a7eb42ae9db99435b639e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

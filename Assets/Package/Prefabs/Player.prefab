@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8154184}
   - component: {fileID: 95478850033958536}
   - component: {fileID: 114797497815119802}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: PlayerCam
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -31,7 +31,7 @@ GameObject:
   - component: {fileID: 460088}
   - component: {fileID: 2393156}
   - component: {fileID: 10242022}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: HUD_bullets
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,7 +53,8 @@ GameObject:
   - component: {fileID: 11415148}
   - component: {fileID: 11478776}
   - component: {fileID: 11414154}
-  m_Layer: 9
+  - component: {fileID: 114084753343808074}
+  m_Layer: 0
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -69,7 +70,7 @@ GameObject:
   m_Component:
   - component: {fileID: 409796}
   - component: {fileID: 2024722}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Camera
   m_TagString: SecondCamera
   m_Icon: {fileID: 0}
@@ -345,8 +346,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentGun: {fileID: 0}
   gunsIHave:
-  - NewGun_Assault
-  - NewGun_Sniper
+  - NewGun_Pistol
   icons: []
   switchWeaponCooldown: 0
   menuStyle: 0
@@ -369,6 +369,7 @@ MonoBehaviour:
   cameraMain: {fileID: 0}
   jumpForce: 15000
   cameraPosition: {x: 0, y: 0, z: 0}
+  dead: 0
   maxSpeed: 5
   deaccelerationSpeed: 20
   accelerationSpeed: 100000
@@ -426,7 +427,7 @@ CapsuleCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 173116}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 344437d1bb127d44ebbff6812c4d82e0, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.3
@@ -452,7 +453,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4730053225657608}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: _playerSounds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -468,7 +469,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4532061015433470}
   - component: {fileID: 82006501625295052}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: _die_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -484,7 +485,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4525795894402938}
   - component: {fileID: 82784591334345954}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: _waeponChangingSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -500,7 +501,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4909484268391186}
   - component: {fileID: 82072754584320168}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: _freakingZombies
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -516,7 +517,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4436234417891686}
   - component: {fileID: 82190838427811640}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: _jumpSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -532,7 +533,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4311107216363778}
   - component: {fileID: 82248981901151284}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: _walkSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -548,7 +549,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4257568553513874}
   - component: {fileID: 82987821035134148}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: _die_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -564,7 +565,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4455057915233520}
   - component: {fileID: 82378112336842120}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: _runSoun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -579,7 +580,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4768776281712228}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: BulletSpawn
   m_TagString: BulletSpawn
   m_Icon: {fileID: 0}
@@ -595,7 +596,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4192255841907586}
   - component: {fileID: 82102465769777700}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: _hitSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1518,6 +1519,23 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114084753343808074
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 173116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f60f9e6facdd6646816b6c72ab302fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 50
+  maxHP: 50
+  armour: 0
+  maxArmour: 0
+  gameOver: {fileID: 0}
+  waveEnd: {fileID: 0}
 --- !u!114 &114797497815119802
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1532,4 +1550,5 @@ MonoBehaviour:
   shopCam: {fileID: 0}
   playerCam: {fileID: 173116}
   plCamFadeIn: {fileID: 95478850033958536}
+  shopFade: {fileID: 0}
   inOrOut: 0

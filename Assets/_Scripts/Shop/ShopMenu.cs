@@ -62,6 +62,16 @@ public class ShopMenu : MonoBehaviour {
         subMenus[3].SetActive(true);
     }
 
+    public void Base()
+    {
+        //typeMenu.SetActive(false);
+        for (int i = 0; i < subMenus.Length; i++)
+        {
+            subMenus[i].SetActive(false);
+        }
+        subMenus[4].SetActive(true);
+    }
+
     public void Back()
     {
         for (int i = 0; i < subMenus.Length; i++)

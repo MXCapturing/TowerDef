@@ -35,6 +35,8 @@ public class GunScript : MonoBehaviour {
 
     public GameObject sniperScope;
 
+    public Animator reload;
+
     public int damage;
 
 	/*
@@ -535,6 +537,7 @@ public class GunScript : MonoBehaviour {
 		if(bulletsIHave > 0 && bulletsInTheGun < amountOfBulletsPerLoad && !reloading/* && !aiming*/){
 
 			if (reloadSound_source.isPlaying == false && reloadSound_source != null) {
+                reload.SetTrigger("Reload");
 				if (reloadSound_source)
 					reloadSound_source.Play ();
 				else
