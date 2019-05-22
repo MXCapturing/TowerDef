@@ -32,7 +32,7 @@ public class DoorUpgrade : MonoBehaviour {
         Currency.instance.money -= doorPrice;
         for (int i = 0; i < doors.Count; i++)
         {
-           GameObject door =  Instantiate(doorLevelUp[doors[i].GetComponent<DoorHealth>().doorUpgradeNo], doors[i].transform.position, doors[i].transform.rotation);
+           GameObject door =  Instantiate(doorLevelUp[upgrade], doors[i].transform.position, doors[i].transform.rotation);
             Destroy(doors[i]);
             doors.Insert(i, door);
         }

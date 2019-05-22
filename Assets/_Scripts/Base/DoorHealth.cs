@@ -9,7 +9,7 @@ public class DoorHealth : MonoBehaviour {
     public int maxHP;
 
     public int doorUpgradeNo;
-    public Renderer doorRen;
+    public Renderer[] doorRen;
     public Image doorHP;
 
 	// Use this for initialization
@@ -23,13 +23,21 @@ public class DoorHealth : MonoBehaviour {
 		if(health <= 0)
         {
             health = 0;
-            doorRen.enabled = false;
             doorHP.enabled = false;
+            doorRen = GetComponentsInChildren<Renderer>();
+            foreach(Renderer r in doorRen)
+            {
+                r.enabled = false;
+            }
         }
         else
         {
-            doorRen.enabled = true;
             doorHP.enabled = true;
+            doorRen = GetComponentsInChildren<Renderer>();
+            foreach (Renderer r in doorRen)
+            {
+                r.enabled = true;
+            }
         }
 
         if(doorHP.enabled == true)
