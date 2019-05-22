@@ -5,7 +5,9 @@ using UnityEngine.UI;
 
 public class DoorUpgrade : MonoBehaviour {
 
-    public List<GameObject> doors = new List<GameObject>();
+    public GameObject doorLv1;
+    public GameObject doorLv2;
+    public GameObject doorLv3;
 
     public Button doorButton;
 
@@ -13,28 +15,30 @@ public class DoorUpgrade : MonoBehaviour {
     public int upgradePriceChange;
     public int upgrade = 1;
 
-    public GameObject[] doorLevelUp;
-
     private void FixedUpdate()
     {
         if(doorPrice > Currency.instance.money || upgrade == 3)
         {
-            doorButton.enabled = false;
+            doorButton.interactable = false;
         }
         else
         {
-            doorButton.enabled = true;
+            doorButton.interactable = true;
         }      
     }
 
     public void Upgrade()
     {
         Currency.instance.money -= doorPrice;
-        for (int i = 0; i < doors.Count; i++)
+        if(upgrade == 1)
         {
-           GameObject door =  Instantiate(doorLevelUp[upgrade], doors[i].transform.position, doors[i].transform.rotation);
-            Destroy(doors[i]);
-            doors.Insert(i, door);
+            doorLv1.SetActive(false);
+            doorLv2.SetActive(true);
+        }
+        if(upgrade == 2)
+        {
+            doorLv2.SetActive(false);
+            doorLv3.SetActive(true);
         }
         upgrade++;
         gameObject.GetComponent<SuppliesRestore>().doorPrice += upgradePriceChange;

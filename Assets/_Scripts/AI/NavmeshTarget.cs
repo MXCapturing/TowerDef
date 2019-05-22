@@ -52,6 +52,11 @@ public class NavmeshTarget : MonoBehaviour {
             targetFinder.SetActive(false);
         }
 
+        if (target.name.Contains("Door") && target.GetComponent<DoorHealth>().doorRen[0].GetComponent<Renderer>().enabled == false)
+        {
+            target = GameObject.Find("Player");
+        }
+
         if(target.name.Contains("Player"))
         {
             agent.SetDestination(target.transform.position);

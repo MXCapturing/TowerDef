@@ -29,6 +29,7 @@ public class DoorHealth : MonoBehaviour {
             {
                 r.enabled = false;
             }
+            this.gameObject.layer = 2;
         }
         else
         {
@@ -38,11 +39,20 @@ public class DoorHealth : MonoBehaviour {
             {
                 r.enabled = true;
             }
+            this.gameObject.layer = 10;
         }
 
         if(doorHP.enabled == true)
         {
-            doorHP.fillAmount = health / maxHP;
+            doorHP.fillAmount = 1 * (health / maxHP);
         }
 	}
+
+    public void Damage(int damage)
+    {
+        if (GamePhases.instance.gamePhases == Phases.FPS)
+        {
+            health -= damage;
+        }
+    }
 }

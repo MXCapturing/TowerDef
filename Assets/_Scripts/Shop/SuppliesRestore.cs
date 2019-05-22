@@ -18,6 +18,8 @@ public class SuppliesRestore : MonoBehaviour {
     private BulletNumbers bulletNo;
     public GameObject player;
 
+    public GameObject[] doors;
+
     private void Start()
     {
         bulletNo = BulletNumbers.instance;
@@ -45,14 +47,14 @@ public class SuppliesRestore : MonoBehaviour {
             hpButton.interactable = true;
         }
 
-        if (doorPrice > Currency.instance.money || doorPrice == 0)
+       /* if (doorPrice > Currency.instance.money || gameObject.GetComponent<DoorUpgrade>().upgrade == 3)
         {
             doorButton.interactable = false;
         }
         else
         {
             doorButton.interactable = true;
-        }
+        }*/
 
         if (armourPrice > Currency.instance.money || player.GetComponent<PlayerHP>().armour == player.GetComponent<PlayerHP>().maxArmour)
         {
@@ -81,9 +83,9 @@ public class SuppliesRestore : MonoBehaviour {
     public void FixDoors()
     {
         Currency.instance.money -= doorPrice;
-        for (int i = 0; i < gameObject.GetComponent<DoorUpgrade>().doors.Count; i++)
+        for (int i = 0; i < doors.Length; i++)
         {
-            gameObject.GetComponent<DoorUpgrade>().doors[i].GetComponent<DoorHealth>().health = gameObject.GetComponent<DoorUpgrade>().doors[i].GetComponent<DoorHealth>().maxHP;
+            doors[i].GetComponent<DoorHealth>().health = doors[i].GetComponent<DoorHealth>().maxHP;
         }
     }
 
