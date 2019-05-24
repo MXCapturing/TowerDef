@@ -19,14 +19,17 @@ public class TurretPlacer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+        RaycastHit hitInfo;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Input.GetMouseButtonDown(0))
         {
-            RaycastHit hitInfo;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
             if(Physics.Raycast(ray, out hitInfo))
             {
-                PlaceCubeNear(hitInfo.point);
+                if(hitInfo.transform.tag == "Map")
+                {
+                    PlaceCubeNear(hitInfo.point);
+                }
             }
         }
         if (Input.GetMouseButtonDown(1))
@@ -37,16 +40,19 @@ public class TurretPlacer : MonoBehaviour {
 
         transform.localScale = new Vector3(xSize * grid.size, 50 * grid.size, zSize* grid.size);
         var hitCollidersColour = Physics.OverlapBox(gameObject.transform.position, new Vector3((xSize * grid.size)/20, grid.size * 100000, (zSize * grid.size)/20), Quaternion.identity, hitlayers);
-        if(hitCollidersColour.Length <= 1)
+        if(Physics.Raycast(ray, out hitInfo))
         {
-            //GetComponent<Renderer>().material.
-            GetComponent<Renderer>().material.color = new Color(0, 1, 0, 0.39f);
-            Debug.Log(hitCollidersColour.Length);
-        }
-        else
-        {
-            GetComponent<Renderer>().material.color = new Color(1, 0, 0, 0.39f);
-            Debug.Log("Red");
+            if (hitCollidersColour.Length <= 1 && hitInfo.transform.tag == "Map")
+            {
+                //GetComponent<Renderer>().material.
+                GetComponent<Renderer>().material.color = new Color(0, 1, 0, 0.39f);
+                Debug.Log(hitCollidersColour.Length);
+            }
+            else
+            {
+                GetComponent<Renderer>().material.color = new Color(1, 0, 0, 0.39f);
+                Debug.Log("Red");
+            }
         }
     }
 
