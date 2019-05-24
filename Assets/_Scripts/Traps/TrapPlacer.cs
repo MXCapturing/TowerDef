@@ -38,7 +38,7 @@ public class TrapPlacer : MonoBehaviour {
                     GameObject newObject = Instantiate(trap, hitInfo.point, Quaternion.identity) as GameObject;
                     newObject.transform.localScale = new Vector3(xSize, ySize, zSize);
                     newObject.transform.rotation = hitInfo.transform.rotation;
-                    newObject.transform.position = new Vector3(newObject.transform.position.x, yAxis, newObject.transform.position.z);
+                    newObject.transform.position = new Vector3(newObject.transform.position.x, hitInfo.transform.position.y, newObject.transform.position.z);
                     ShopMenu.instance.shopMenu.SetActive(true);
                     References.instance.trapMap.SetActive(false);
                     References.instance.trapCam.SetActive(false);
