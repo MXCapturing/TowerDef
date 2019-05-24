@@ -5,8 +5,9 @@ using UnityEngine.UI;
 
 public class DoorHealth : MonoBehaviour {
 
-    public int health;
-    public int maxHP;
+    public float health;
+    public float maxHP;
+    public float fillAmount;
 
     public int doorUpgradeNo;
     public Renderer[] doorRen;
@@ -44,7 +45,8 @@ public class DoorHealth : MonoBehaviour {
 
         if(doorHP.enabled == true)
         {
-            doorHP.fillAmount = 1 * (health / maxHP);
+            fillAmount = health / maxHP;
+            doorHP.fillAmount = fillAmount;
         }
 	}
 

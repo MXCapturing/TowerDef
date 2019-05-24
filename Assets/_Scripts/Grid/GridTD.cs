@@ -25,7 +25,7 @@ public class GridTD : MonoBehaviour {
         return result;
     }
 
-    private void OnDrawGizmos()
+    /*private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
         for (float x = 0; x < 40; x += size)
@@ -36,5 +36,5 @@ public class GridTD : MonoBehaviour {
                 Gizmos.DrawSphere(point, 0.1f);
             }
         }
-    }
+    }*/
 }
