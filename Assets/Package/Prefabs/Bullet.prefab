@@ -104,7 +104,7 @@ MonoBehaviour:
     type: 2}
   ignoreLayer:
     serializedVersion: 2
-    m_Bits: 4
+    m_Bits: 2052
   damage: 0
   bulletType: 
 --- !u!1001 &100100000

@@ -17,6 +17,7 @@ public class SelectonGrid : MonoBehaviour {
             bool hit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo);
             if (hit)
             {
+                Debug.Log("Click");
                 if (hitInfo.transform.gameObject.tag == "Turret" || hitInfo.transform.gameObject.tag == "Trap")
                 {
                     hitInfo.transform.GetComponent<TurretInfo>().SetInfoOn();

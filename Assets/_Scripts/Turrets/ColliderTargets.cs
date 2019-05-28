@@ -15,6 +15,7 @@ public class ColliderTargets : MonoBehaviour {
     {
         if (other.tag == "Enemy")
         {
+            Debug.Log("Enter");
             turretTarget.targets.Add(other.gameObject);
         }
     }

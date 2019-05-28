@@ -124,10 +124,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f7ba04f163462e43b9f253b3129237f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turret: {fileID: 1550411524398680, guid: 71b1efd6e77b4ad44b16b5e92ab48463, type: 2}
+  turret: {fileID: 1211985694542784, guid: 05d0ce54f7c1d7040851f4bbf163de2e, type: 2}
   xSize: 75
   zSize: 75
-  shopMenu: {fileID: 0}
   hitlayers:
     serializedVersion: 2
     m_Bits: 1
+  price: 0

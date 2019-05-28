@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4997474638733392}
   - component: {fileID: 135391054152998702}
   - component: {fileID: 114153275962715688}
-  m_Layer: 2
+  m_Layer: 11
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -914,6 +914,8 @@ MonoBehaviour:
   targets: []
   turretType: 1
   flameCone: {fileID: 114784963476786634}
+  rocket: {fileID: 0}
+  rocketSpawn: {fileID: 0}
 --- !u!114 &114970421632506462
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -109,12 +109,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f7ba04f163462e43b9f253b3129237f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turret: {fileID: 1951828900947116, guid: 9da69a1915114374b96dfed140f50108, type: 2}
+  turret: {fileID: 1175409570565438, guid: 15666a40dd0fcf04f8048b9383cc822e, type: 2}
   xSize: 75
   zSize: 75
   hitlayers:
     serializedVersion: 2
     m_Bits: 1
+  price: 0
 --- !u!114 &114610990167368990
 MonoBehaviour:
   m_ObjectHideFlags: 1

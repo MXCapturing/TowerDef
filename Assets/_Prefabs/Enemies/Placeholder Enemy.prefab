@@ -235,6 +235,8 @@ MonoBehaviour:
   damage: 5
   attackDelay: 2
   attackHitbox: {fileID: 1605765401320758}
+  _anim: {fileID: 0}
+  inRange: {fileID: 0}
 --- !u!114 &114363992903378106
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -261,6 +263,9 @@ MonoBehaviour:
   target: {fileID: 0}
   nextTarget: {fileID: 0}
   targetFinder: {fileID: 1295640231863320}
+  _anim: {fileID: 0}
+  attacking: 0
+  dead: 0
   trapped: 0
   maxSpeed: 4
 --- !u!114 &114512506839301826
@@ -274,7 +279,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd1e6d4b4050ee41bc0be36689ad4fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _anim: {fileID: 0}
   hp: 100
+  money: 0
 --- !u!135 &135240342121340818
 SphereCollider:
   m_ObjectHideFlags: 1
