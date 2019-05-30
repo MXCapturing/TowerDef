@@ -2,8 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public enum MenuStyle{
-	horizontal,vertical
+public enum GunUsed{
+	Pistol, Shotgun, Sniper
 }
 
 public class GunInventory : MonoBehaviour {
@@ -11,6 +11,8 @@ public class GunInventory : MonoBehaviour {
 	public GameObject currentGun;
 	private Animator currentHAndsAnimator;
 	private int currentGunCounter = 0;
+
+    public GunUsed gunUsed;
 
 	[Tooltip("Put Strings of weapon objects from Resources Folder.")]
 	public List<string> gunsIHave = new List<string>();
@@ -225,8 +227,8 @@ public class GunInventory : MonoBehaviour {
 	}*/
 
 	[Header("GUI Gun preview variables")]
-	[Tooltip("Weapon icons style to pick.")]
-	public MenuStyle menuStyle = MenuStyle.horizontal;
+	/*[Tooltip("Weapon icons style to pick.")]
+	public MenuStyle menuStyle = MenuStyle.horizontal;*/
 	[Tooltip("Spacing between icons.")]
 	public int spacing = 10;
 	[Tooltip("Begin position in percetanges of screen.")]

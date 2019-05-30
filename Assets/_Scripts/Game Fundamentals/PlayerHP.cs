@@ -6,8 +6,8 @@ using UnityEngine.Analytics;
 
 public class PlayerHP : MonoBehaviour {
 
-    public int health;
-    public int maxHP;
+    public float health;
+    public float maxHP;
 
     public int armour;
     public int maxArmour;
@@ -15,10 +15,7 @@ public class PlayerHP : MonoBehaviour {
     public GameObject gameOver;
     public Text waveEnd;
 
-	// Use this for initialization
-	void Start () {
-
-	}
+    public Image healthBar;
 	
     public void Damage(int damage)
     {
@@ -44,6 +41,7 @@ public class PlayerHP : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate ()
     {
+        healthBar.fillAmount = health / maxHP;
 		if(health <= 0)
         {
             this.gameObject.GetComponent<PlayerMovementScript>().enabled = false;

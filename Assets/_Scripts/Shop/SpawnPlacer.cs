@@ -15,12 +15,15 @@ public class SpawnPlacer : MonoBehaviour {
     public int[] prices;
     public Button[] buttons;
 
+    public Text[] priceText;
+
     private void FixedUpdate()
     {
         if(GamePhases.instance.gamePhases == Phases.Build)
         {
             for (int i = 0; i < buttons.Length; i++)
             {
+                priceText[i].text = "" + prices[i];
                 if (prices[i] <= GameObject.FindGameObjectWithTag("GameController").GetComponent<Currency>().money)
                 {
                     buttons[i].interactable = true;

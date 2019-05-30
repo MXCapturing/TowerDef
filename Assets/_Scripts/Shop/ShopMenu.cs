@@ -8,9 +8,11 @@ public class ShopMenu : MonoBehaviour {
     public static ShopMenu instance;
 
     public GameObject shopMenu;
+    public GameObject mainShopTop;
     public GameObject[] subMenus;
     public GameObject typeMenu;
     public GameObject mapBack;
+    public GameObject mapUI;
 
     public Image darkPanel;
 
@@ -29,6 +31,7 @@ public class ShopMenu : MonoBehaviour {
         {
             subMenus[i].SetActive(false);
         }
+        mainShopTop.SetActive(false);
         subMenus[0].SetActive(true);
     }
 
@@ -39,7 +42,8 @@ public class ShopMenu : MonoBehaviour {
         {
             subMenus[i].SetActive(false);
         }
-        subMenus[1].SetActive(true);
+        mainShopTop.SetActive(false);
+        subMenus[2].SetActive(true);
     }
 
     public void Supplies()
@@ -49,7 +53,8 @@ public class ShopMenu : MonoBehaviour {
         {
             subMenus[i].SetActive(false);
         }
-        subMenus[2].SetActive(true);
+        mainShopTop.SetActive(false);
+        subMenus[3].SetActive(true);
     }
 
     public void Guns()
@@ -59,7 +64,8 @@ public class ShopMenu : MonoBehaviour {
         {
             subMenus[i].SetActive(false);
         }
-        subMenus[3].SetActive(true);
+        mainShopTop.SetActive(false);
+        subMenus[1].SetActive(true);
     }
 
     public void Base()
@@ -69,6 +75,7 @@ public class ShopMenu : MonoBehaviour {
         {
             subMenus[i].SetActive(false);
         }
+        mainShopTop.SetActive(false);
         subMenus[4].SetActive(true);
     }
 
@@ -79,6 +86,7 @@ public class ShopMenu : MonoBehaviour {
             subMenus[i].SetActive(false);
             //typeMenu.SetActive(true);
         }
+        mainShopTop.SetActive(true);
     }
 
     public void ViewMap()
@@ -88,15 +96,26 @@ public class ShopMenu : MonoBehaviour {
             subMenus[i].SetActive(false);
         }
         mapView = true;
+        mapUI.SetActive(true);
+        mainShopTop.SetActive(false);
         shopMenu.SetActive(false);
         mapBack.SetActive(true);
     }
 
-    public void MapBack()
+    private void FixedUpdate()
     {
-        mapView = false;
-        References.instance.turretInfo.SetActive(false);
-        shopMenu.SetActive(true);
-        mapBack.SetActive(false);
+        if(mapView == true && Input.GetMouseButtonDown(1))
+        {
+            mapView = false;
+            mapUI.SetActive(false);
+            for (int i = 0; i < References.instance.turretInfo.Length; i++)
+            {
+                References.instance.turretInfo[i].SetActive(false);
+            }
+            References.instance.upgradeAndSell.SetActive(false);
+            shopMenu.SetActive(true);
+            mainShopTop.SetActive(true);
+            mapBack.SetActive(false);
+        }
     }
 }

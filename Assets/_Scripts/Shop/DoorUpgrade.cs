@@ -10,6 +10,9 @@ public class DoorUpgrade : MonoBehaviour {
     public GameObject doorLv3;
 
     public Button doorButton;
+    public GameObject doorMax;
+
+    public Text doorText;
 
     public int doorPrice;
     public int upgradePriceChange;
@@ -17,6 +20,7 @@ public class DoorUpgrade : MonoBehaviour {
 
     private void FixedUpdate()
     {
+        doorText.text = "" + doorPrice;
         if(doorPrice > Currency.instance.money || upgrade == 3)
         {
             doorButton.interactable = false;
@@ -25,6 +29,14 @@ public class DoorUpgrade : MonoBehaviour {
         {
             doorButton.interactable = true;
         }      
+        if(upgrade == 3)
+        {
+            doorMax.SetActive(true);
+        }
+        else
+        {
+            doorMax.SetActive(false);
+        }
     }
 
     public void Upgrade()
@@ -41,6 +53,7 @@ public class DoorUpgrade : MonoBehaviour {
             doorLv3.SetActive(true);
         }
         upgrade++;
+        doorPrice += 2000;
         gameObject.GetComponent<SuppliesRestore>().doorPrice += upgradePriceChange;
     }
 }

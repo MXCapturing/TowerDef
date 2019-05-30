@@ -63,7 +63,7 @@ public class TurretPlacer : MonoBehaviour {
         if(hitColliders.Length <= 1)
         {
             GameObject.FindGameObjectWithTag("GameController").GetComponent<Currency>().money -= price;
-            GameObject newObject = Instantiate(turret, finalPosition, Quaternion.identity) as GameObject;
+            Instantiate(turret, finalPosition, Quaternion.identity);
             Analytics.CustomEvent("Placed Turret", new Dictionary<string, object>
             {
                 {turret.name, 1 }

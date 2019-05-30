@@ -927,13 +927,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bac4baea61757d946b761d95dc17e4c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turretName: Flamethrower
   fireRate: 0.5
   damage: 30
-  level: 3
   upgradeCost: 0
   sellCost: 750
-  upgradeNumber: 0
+  upgradeNumber: 6
 --- !u!135 &135391054152998702
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -7,7 +7,9 @@ public class SellorUpgrade : MonoBehaviour {
 
     public GameObject turretInfo;
     public Button upgrade;
-    public GameObject upgradeButton;
+    public GameObject upgradeMax;
+    public Text upgradeText;
+    public Text sellText;
 
     private int upgradeTo;
     public GameObject[] turretNumber;
@@ -25,12 +27,19 @@ public class SellorUpgrade : MonoBehaviour {
         Currency.instance.money = Currency.instance.money + References.instance.turretChosen.GetComponent<TurretInfo>().sellCost;
         Destroy(References.instance.turretChosen);
         References.instance.turretChosen = null;
+        References.instance.upgradeAndSell.SetActive(false);
+        for (int i = 0; i < References.instance.turretInfo.Length; i++)
+        {
+            References.instance.turretInfo[i].SetActive(false);
+        }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if(References.instance.turretChosen != null)
         {
+            upgradeText.text = "" + References.instance.turretChosen.GetComponent<TurretInfo>().upgradeCost;
+            sellText.text = "" + References.instance.turretChosen.GetComponent<TurretInfo>().sellCost;
             if (Currency.instance.money >= References.instance.turretChosen.GetComponent<TurretInfo>().upgradeCost)
             {
                 upgrade.interactable = true;
@@ -42,11 +51,13 @@ public class SellorUpgrade : MonoBehaviour {
 
             if(References.instance.turretChosen.GetComponent<TurretInfo>().upgradeCost == 0)
             {
-                upgradeButton.SetActive(false);
+                upgradeMax.SetActive(true);
+                upgrade.interactable = false;
             }
             else
             {
-                upgradeButton.SetActive(true);
+                upgradeMax.SetActive(false);
+                upgrade.interactable = true;
             }
         }
     }
@@ -55,10 +66,15 @@ public class SellorUpgrade : MonoBehaviour {
     {
         upgradeTo = References.instance.turretChosen.GetComponent<TurretInfo>().upgradeNumber;
         turretInfo.SetActive(false);
-        Currency.instance.money = Currency.instance.money - References.instance.turretChosen.GetComponent<TurretInfo>().upgradeCost;
+        Currency.instance.money -= References.instance.turretChosen.GetComponent<TurretInfo>().upgradeCost;
         turretPos = References.instance.turretChosen.transform.position;
         Destroy(References.instance.turretChosen);
         References.instance.turretChosen = null;
         Instantiate(turretNumber[upgradeTo], turretPos, Quaternion.identity);
+        References.instance.upgradeAndSell.SetActive(false);
+        for (int i = 0; i < References.instance.turretInfo.Length; i++)
+        {
+            References.instance.turretInfo[i].SetActive(false);
+        }
     }
 }

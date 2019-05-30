@@ -696,13 +696,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bac4baea61757d946b761d95dc17e4c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turretName: Machine Gun
   fireRate: 2
   damage: 5
-  level: 3
   upgradeCost: 0
   sellCost: 400
-  upgradeNumber: 0
+  upgradeNumber: 3
 --- !u!114 &114507571736636174
 MonoBehaviour:
   m_ObjectHideFlags: 1

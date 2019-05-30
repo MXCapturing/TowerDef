@@ -13,15 +13,38 @@ public class GunUpgrades : MonoBehaviour {
     public int sniperPrice;
     public int sniperLevel;
 
+    public Text pistolPriceText;
+    public Text shotgunPriceText;
+    public Text sniperPriceText;
+    public Text shotgunPriceText2;
+    public Text sniperPriceText2;
+
     public Button pistolButton;
-    public Button shotgunButton;
-    public Button sniperButton;
+    public Button shotgunBuyButton;
+    public Button shotgunUpgrade;
+    public Button sniperBuyButton;
+    public Button sniperUpgrade;
+
+    public GameObject pistolMax;
+    public GameObject shotgunMax;
+    public GameObject shotgunBuy;
+    public GameObject shotgunUp;
+    public GameObject sniperMax;
+    public GameObject sniperBuy;
+    public GameObject sniperUp;
 
     public GameObject player;
 
-    private void Update()
+    private void FixedUpdate()
     {
-        if(pistolPrice > Currency.instance.money || pistolLevel == 5)
+        pistolPriceText.text = "" + pistolPrice;
+        shotgunPriceText.text = "" + shotgunPrice;
+        sniperPriceText.text = "" + sniperPrice;
+        shotgunPriceText2.text = "" + shotgunPrice;
+        sniperPriceText2.text = "" + sniperPrice;
+
+        #region Pistol
+        if (pistolPrice > Currency.instance.money || pistolLevel == 5)
         {
             pistolButton.interactable = false;
         }
@@ -30,28 +53,104 @@ public class GunUpgrades : MonoBehaviour {
             pistolButton.interactable = true;
         }
 
-        if (shotgunPrice > Currency.instance.money || shotgunLevel == 5)
+        if(pistolLevel == 5)
         {
-            shotgunButton.interactable = false;
+            pistolMax.SetActive(true);
+        }
+        #endregion
+        #region Shotgun
+
+        if(shotgunLevel == 0)
+        {
+            shotgunBuy.SetActive(true);
         }
         else
         {
-            shotgunButton.interactable = true;
+            shotgunBuy.SetActive(false);
+        }
+        if(shotgunLevel >= 1)
+        {
+            shotgunUp.SetActive(true);
+        }
+        else
+        {
+            shotgunUp.SetActive(false);
+        }
+        if (shotgunPrice > Currency.instance.money || shotgunLevel >= 1)
+        {
+            shotgunBuyButton.interactable = false;
+        }
+        else
+        {
+            shotgunBuyButton.interactable = true;
+        }
+
+        if(shotgunPrice > Currency.instance.money || shotgunLevel == 5)
+        {
+            shotgunUpgrade.interactable = false;
+        }
+        else
+        {
+            shotgunUpgrade.interactable = true;
+        }
+
+        if(shotgunLevel == 5)
+        {
+            shotgunMax.SetActive(true);
+        }
+        #endregion
+        #region Sniper
+        if(sniperLevel == 0)
+        {
+            sniperBuy.SetActive(true);
+        }
+        else
+        {
+            sniperBuy.SetActive(false);
+        }
+        if(sniperLevel >= 1)
+        {
+            sniperUp.SetActive(true);
+        }
+        else
+        {
+            sniperUp.SetActive(false);
+        }
+        if (sniperPrice > Currency.instance.money || sniperLevel >= 1)
+        {
+            sniperBuyButton.interactable = false;
+        }
+        else
+        {
+            sniperBuyButton.interactable = true;
         }
 
         if (sniperPrice > Currency.instance.money || sniperLevel == 5)
         {
-            sniperButton.interactable = false;
+            sniperUpgrade.interactable = false;
         }
         else
         {
-            sniperButton.interactable = true;
+            sniperUpgrade.interactable = true;
         }
+
+        if (sniperLevel == 5)
+        {
+            sniperMax.SetActive(true);
+        }
+        #endregion
     }
 
     public void PistolUp()
     {
-        if(pistolLevel < 4)
+        if (pistolLevel == 4)
+        {
+            Currency.instance.money -= pistolPrice;
+            pistolLevel++;
+            player.GetComponent<GunInventory>().gunsIHave.Remove("NewGun_Pistol");
+            player.GetComponent<GunInventory>().gunsIHave.Insert(0, "NewGun_Assault");
+        }
+        if (pistolLevel < 4)
         {
             Currency.instance.money -= pistolPrice;
             pistolPrice += 200;
@@ -65,13 +164,7 @@ public class GunUpgrades : MonoBehaviour {
                 BulletNumbers.instance.pistolBulletsInStock = BulletNumbers.instance.pistolMaxInStock;
             }
         }
-        if(pistolLevel == 4)
-        {
-            Currency.instance.money -= pistolPrice;
-            pistolLevel++;
-            player.GetComponent<GunInventory>().gunsIHave.Remove("NewGun_Pistol");
-            player.GetComponent<GunInventory>().gunsIHave.Insert(0, "NewGun_Assault");
-        }
+        
         Analytics.CustomEvent("Pistol Upgraded", new Dictionary<string, object>
         {
             {"Pistol Level", pistolLevel }

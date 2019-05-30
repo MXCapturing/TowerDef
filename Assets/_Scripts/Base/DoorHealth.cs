@@ -12,6 +12,7 @@ public class DoorHealth : MonoBehaviour {
     public int doorUpgradeNo;
     public Renderer[] doorRen;
     public Image doorHP;
+    public Image doorUIHealth;
 
 	// Use this for initialization
 	void Start () {
@@ -21,6 +22,7 @@ public class DoorHealth : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate ()
     {
+        doorUIHealth.fillAmount = health / maxHP;
 		if(health <= 0)
         {
             health = 0;

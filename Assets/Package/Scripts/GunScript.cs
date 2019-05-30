@@ -75,6 +75,7 @@ public class GunScript : MonoBehaviour {
             bulletsIHave = bulletSets.pistolBulletsInStock;
             amountOfBulletsPerLoad = bulletSets.pistolMaxInGun;
             damage = bulletSets.pistolDamage;
+            GameObject.Find("Player").GetComponent<GunInventory>().gunUsed = GunUsed.Pistol;
         }
         if (currentStyle == GunStyles.assault)
         {
@@ -82,6 +83,7 @@ public class GunScript : MonoBehaviour {
             bulletsIHave = bulletSets.pistolBulletsInStock;
             amountOfBulletsPerLoad = bulletSets.pistolMaxInGun;
             damage = bulletSets.pistolDamage;
+            GameObject.Find("Player").GetComponent<GunInventory>().gunUsed = GunUsed.Pistol;
         }
         if (currentStyle == GunStyles.shotgun)
         {
@@ -89,6 +91,7 @@ public class GunScript : MonoBehaviour {
             bulletsIHave = bulletSets.shotgunBulletsInStock;
             amountOfBulletsPerLoad = bulletSets.shotgunMaxInGun;
             damage = bulletSets.shotgunDamage;
+            GameObject.Find("Player").GetComponent<GunInventory>().gunUsed = GunUsed.Shotgun;
         }
         if (currentStyle == GunStyles.sniper)
         {
@@ -96,6 +99,7 @@ public class GunScript : MonoBehaviour {
             bulletsIHave = bulletSets.sniperBulletsInStock;
             amountOfBulletsPerLoad = bulletSets.sniperMaxInGun;
             damage = bulletSets.sniperDamage;
+            GameObject.Find("Player").GetComponent<GunInventory>().gunUsed = GunUsed.Sniper;
         }
     }
 
@@ -191,7 +195,7 @@ public class GunScript : MonoBehaviour {
             {
                 BulletNumbers.instance.sniperBulletsInGun = bulletsInTheGun;
                 BulletNumbers.instance.sniperBulletsInStock = bulletsIHave;
-                if(Input.GetAxis("Fire2") == 1)
+                if (Input.GetAxis("Fire2") == 1)
                 {
                     sniperScope.SetActive(true);
                 }

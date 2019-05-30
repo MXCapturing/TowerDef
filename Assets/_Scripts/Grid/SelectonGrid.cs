@@ -20,8 +20,8 @@ public class SelectonGrid : MonoBehaviour {
                 Debug.Log("Click");
                 if (hitInfo.transform.gameObject.tag == "Turret" || hitInfo.transform.gameObject.tag == "Trap")
                 {
-                    hitInfo.transform.GetComponent<TurretInfo>().SetInfoOn();
                     References.instance.turretChosen = hitInfo.transform.gameObject;
+                    hitInfo.transform.GetComponent<TurretInfo>().SetInfoOn();
                 }
             }
         }
