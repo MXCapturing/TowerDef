@@ -29,4 +29,16 @@ public class ColliderTargets : MonoBehaviour {
         }
     }
 
+    private void FixedUpdate()
+    {
+        if(GamePhases.instance.gamePhases == Phases.Build)
+        {
+            this.GetComponent<Collider>().enabled = false;
+        }
+        else if(GamePhases.instance.gamePhases == Phases.FPS)
+        {
+            this.GetComponent<Collider>().enabled = true;
+        }
+    }
+
 }
