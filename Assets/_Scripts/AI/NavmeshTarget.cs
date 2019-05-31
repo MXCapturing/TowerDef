@@ -25,10 +25,11 @@ public class NavmeshTarget : MonoBehaviour {
         agent = GetComponent<NavMeshAgent>();
         phases = GameObject.Find("GameManager").GetComponent<GamePhases>();
         maxSpeed = EnemyWaves.instance.enemySpeed;
+        InvokeRepeating("ChangeTarget", 1, 1);
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
         if(phases.gamePhases == Phases.FPS && trapped == false && dead == false && attacking == false)
         {
             agent.speed = maxSpeed;
@@ -51,23 +52,18 @@ public class NavmeshTarget : MonoBehaviour {
         {
             targetFinder.SetActive(false);
         }
+	}
 
+    void ChangeTarget()
+    {
         if (target.name.Contains("Door") && target.GetComponent<DoorHealth>().doorRen[0].GetComponent<Renderer>().enabled == false)
         {
             target = GameObject.Find("Player");
         }
 
-        if(target.name.Contains("Player"))
+        if (target.name.Contains("Player"))
         {
             agent.SetDestination(target.transform.position);
-        }
-	}
-
-    private void FixedUpdate()
-    {
-        if(GetComponent<Rigidbody>().isKinematic == true)
-        {
-           // Invoke("KinematicOff", 0.5f);
         }
     }
 

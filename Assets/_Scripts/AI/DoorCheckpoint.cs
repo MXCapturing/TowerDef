@@ -32,11 +32,11 @@ public class DoorCheckpoint : MonoBehaviour {
         {
             checkpoint = door1;
         }
-        if (GameObject.Find("Script Holder").GetComponent<DoorUpgrade>().upgrade == 2)
+        else if (GameObject.Find("Script Holder").GetComponent<DoorUpgrade>().upgrade == 2)
         {
             checkpoint = door2;
         }
-        if (GameObject.Find("Script Holder").GetComponent<DoorUpgrade>().upgrade == 3)
+        else if (GameObject.Find("Script Holder").GetComponent<DoorUpgrade>().upgrade == 3)
         {
             checkpoint = door3;
         }

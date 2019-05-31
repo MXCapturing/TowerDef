@@ -16,15 +16,24 @@ public class BulletScript : MonoBehaviour {
 	[Tooltip("Put Weapon layer and Player layer to ignore bullet raycast.")]
 	public LayerMask ignoreLayer;
 
+    public AudioSource hitMarker;
+    public AudioSource headHitMarker;
+
     public int damage;
     public string bulletType;
 
-	/*
+    private void Start()
+    {
+        hitMarker = GameObject.Find("Audio Manager").transform.Find("HitMarker").GetComponent<AudioSource>();
+        headHitMarker = GameObject.Find("Audio Manager").transform.Find("HeadHitMarker").GetComponent<AudioSource>();
+    }
+
+    /*
 	* Uppon bullet creation with this script attatched,
 	* bullet creates a raycast which searches for corresponding tags.
 	* If raycast finds somethig it will create a decal of corresponding tag.
 	*/
-	void Update () {
+    void FixedUpdate () {
 
         Debug.Log(bulletType);
         if(bulletType == "pistol" || bulletType == "assault" || bulletType == "sniper")
@@ -41,12 +50,14 @@ public class BulletScript : MonoBehaviour {
                     if (hit.collider.tag == "Enemy")
                     {
                         hit.transform.GetComponent<EnemyHP>().Damage(damage);
+                        hitMarker.Play();
                         Debug.Log("Hit");
                         Debug.Log(damage);
                     }
                     if (hit.collider.tag == "EnemyHead")
                     {
                         hit.transform.GetComponent<EnemyHP>().Damage(damage * 2);
+                        headHitMarker.Play();
                         Debug.Log("HeadHit");
                         Debug.Log(damage * 2);
                     }
@@ -75,12 +86,14 @@ public class BulletScript : MonoBehaviour {
                         if (hit.collider.tag == "Enemy")
                         {
                             hit.transform.GetComponent<EnemyHP>().Damage(damage);
+                            hitMarker.Play();
                             Debug.Log("Hit");
                             Debug.Log(damage);
                         }
                         if (hit.collider.tag == "EnemyHead")
                         {
                             hit.transform.GetComponent<EnemyHP>().Damage(damage * 2);
+                            headHitMarker.Play();
                             Debug.Log("HeadHit");
                             Debug.Log(damage * 2);
                         }

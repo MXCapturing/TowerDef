@@ -80,6 +80,7 @@ public class FadeToBlack : MonoBehaviour {
     public void EnableShop()
     {
         GamePhases.instance.gamePhases = Phases.Build;
+        ShopMenu.instance.mainShopTop.SetActive(true);
         GamePhases.instance.PhasesGame();
     }
 

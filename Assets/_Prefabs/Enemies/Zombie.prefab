@@ -1124,7 +1124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _anim: {fileID: 95236952340984588}
   hp: 50
-  money: 200
+  money: 10
 --- !u!114 &114676351500575176
 MonoBehaviour:
   m_ObjectHideFlags: 1

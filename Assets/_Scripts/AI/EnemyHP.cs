@@ -23,7 +23,7 @@ public class EnemyHP : MonoBehaviour {
             {
                 this.GetComponent<NavmeshTarget>().dead = true;
                 Currency.instance.money += money;
-                this.GetComponent<Collider>().enabled = false;
+                //this.GetComponent<Collider>().enabled = false;
                 int dead = Random.Range(0, 4);
                 _anim.SetTrigger("Death " + dead);
             }

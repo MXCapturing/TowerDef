@@ -10,8 +10,8 @@ public class NextCheckpoint : MonoBehaviour {
     {
         if(other.tag == "Enemy")
         {
-            other.transform.root.GetComponent<NavmeshTarget>().agent.SetDestination(checkpoint.transform.position);
             other.transform.root.GetComponent<NavmeshTarget>().target = checkpoint;
+            other.transform.root.GetComponent<NavmeshTarget>().agent.SetDestination(checkpoint.transform.position);
         }
     }
 }

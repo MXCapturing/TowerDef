@@ -16,6 +16,10 @@ public class GamePhases : MonoBehaviour {
 
     public GameObject shopMenu;
 
+    public AudioSource musicPlayer;
+    public AudioClip shopMusic;
+    public AudioClip fpsMusic;
+
 	// Use this for initialization
 	void Start () {
         instance = this;
@@ -33,10 +37,14 @@ public class GamePhases : MonoBehaviour {
         {
             case Phases.Build:
                 shopMenu.SetActive(true);
+                musicPlayer.clip = shopMusic;
+                musicPlayer.Play();
                 break;
 
             case Phases.FPS:
                 shopMenu.SetActive(false);
+                musicPlayer.clip = fpsMusic;
+                musicPlayer.Play();
                 break;
         }
     }
